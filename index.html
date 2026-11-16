@@ -113,13 +113,12 @@
   const SUPABASE_URL = "https://hpqvoexqhxujraokmxkl.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_XQ9ExRRodYDfnGHzG4NAuQ_QdNmzFOg";
 let supabaseClient = null;
-
-  let supabaseClient = null;
-  let usuario = null;
-  let casas = [];
-  let favoritos = [];
-  let modoCadastro = false;
-  let coordenadasUsuario = null;
+let supabaseClient = null;
+let usuario = null;
+let casas = [];
+let favoritos = [];
+let modoCadastro = false;
+let coordenadasUsuario = null;
 
   function configurarSupabase(){
     if(!window.supabase){mostrarErro("Não foi possível carregar a biblioteca de conexão. Verifique sua internet e atualize a página.");return false;}
