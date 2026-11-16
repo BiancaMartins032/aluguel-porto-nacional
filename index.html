@@ -22,6 +22,76 @@
 
 <style>
 
+.acoes-topo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.menu-topo {
+  position: relative;
+}
+
+.menu-topo summary {
+  list-style: none;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid rgba(255,255,255,.4);
+  border-radius: 11px;
+  cursor: pointer;
+}
+
+.menu-topo summary::-webkit-details-marker {
+  display: none;
+}
+
+.menu-topo summary span {
+  width: 19px;
+  height: 2px;
+  border-radius: 2px;
+  background: #FFFFFF;
+}
+
+.menu-conteudo {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 100;
+  width: 190px;
+  padding: 8px;
+  background: #FFFFFF;
+  border: 1px solid #E3E7F2;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(15,35,80,.18);
+}
+
+.menu-conteudo a,
+.menu-conteudo button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #173A7A;
+  text-align: left;
+  text-decoration: none;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.menu-conteudo a:hover,
+.menu-conteudo button:hover {
+  background: #F3F6FF;
+}
+
   * {
     box-sizing: border-box;
     margin: 0;
@@ -52,31 +122,32 @@ header {
   gap: 16px;
 }
 
+
 .marca {
-  display: grid;
-  grid-template-columns: 58px 1fr;
+  display: flex;
   align-items: center;
-  column-gap: 15px;
+  gap: 12px;
+  min-width: 0;
 }
 
 .marca::before {
-  content: "⌂";
-  grid-column: 1;
-  grid-row: 1 / 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 58px;
-  height: 58px;
-  border-radius: 13px;
-  background: #FE6C01;
-  color: #FFFFFF;
-  font-size: 43px;
-  font-weight: bold;
+  content: none;
+  display: none;
+}
+
+.logo-marca {
+  display: block;
+  width: 52px;
+  height: 52px;
+  max-width: 52px;
+  max-height: 52px;
+  flex: 0 0 52px;
+}
+.marca-texto {
+  min-width: 0;
 }
 
 .marca h1 {
-  grid-column: 2;
   color: #FFFFFF;
   font-size: 25px;
   line-height: 1.15;
@@ -85,11 +156,11 @@ header {
 }
 
 .marca p {
-  grid-column: 2;
   color: #E1E9FF;
   font-size: 12px;
-  margin-top: 4px;
+  margin: 4px 0 0;
 }
+
 
 .perfil {
   flex-shrink: 0;
@@ -130,30 +201,47 @@ main {
     gap: 9px;
   }
 
+  
   .marca {
-    grid-template-columns: 42px 1fr;
-    column-gap: 9px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
   }
 
-  .marca::before {
-    width: 42px;
-    height: 42px;
-    font-size: 32px;
-    border-radius: 10px;
+  .logo-marca {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+  }
+
+  .marca-texto {
+    min-width: 0;
   }
 
   .marca h1 {
-    font-size: 17px;
+    font-size: 16px;
   }
 
   .marca p {
     font-size: 10px;
   }
 
+
   .perfil {
     width: 39px;
     height: 39px;
   }
+  
+  .acoes-topo {
+    gap: 7px;
+  }
+
+  .menu-topo summary {
+    width: 39px;
+    height: 39px;
+  }
+
 
   main {
     padding: 16px 13px;
