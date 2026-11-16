@@ -5,52 +5,512 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#315E49">
   <title>Aluguel Porto Nacional</title>
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:Arial,sans-serif;background:#F4F6F0;color:#263B30}
-    header{background:#fff;padding:18px 16px;border-bottom:1px solid #E5E9E2}
-    .topo{max-width:700px;margin:auto;display:flex;justify-content:space-between;align-items:center}
-    .marca h1{color:#315E49;font-size:21px}.marca p{color:#68766B;font-size:12px;margin-top:4px}
-    .perfil{border:0;background:#F0F3ED;color:#315E49;width:40px;height:40px;border-radius:50%;font-size:20px;cursor:pointer}
-    .admin-acesso{
-  border:0;
-  background:#315E49;
-  color:white;
-  padding:10px 12px;
-  border-radius:9px;
-  font-size:12px;
-  font-weight:bold;
-  cursor:pointer;
-}
-    main{max-width:700px;margin:auto;padding:16px}
-    .localizacao,.busca{background:#fff;border-radius:12px;margin-bottom:12px}
-    .localizacao{padding:14px;display:flex;align-items:center;gap:10px;cursor:pointer}
-    .localizacao small{color:#68766B;display:block;margin-bottom:3px}
-    .busca{padding:13px;display:flex;gap:10px;margin-bottom:22px}
-    .busca input{border:0;outline:0;width:100%;font-size:14px;color:#263B30;background:transparent}
-    .titulo-lista{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-    .titulo-lista h2{font-size:17px}.titulo-lista span{color:#68766B;font-size:12px}
-    .casa{background:#fff;padding:10px;border-radius:12px;display:flex;gap:12px;align-items:center;margin-bottom:10px;cursor:pointer}
-    .casa img{width:100px;height:100px;object-fit:cover;border-radius:9px;flex-shrink:0;background:#edf0e9}
-    .informacoes{flex:1;min-width:0}.informacoes h3{font-size:15px;margin-bottom:7px}
-    .informacoes p{font-size:12px;color:#68766B;margin-bottom:7px}
-    .preco{color:#315E49!important;font-weight:bold;font-size:14px!important;margin-bottom:0!important}
-    .favorito{background:transparent;border:0;font-size:24px;color:#9AA39B;cursor:pointer;padding:5px}
-    .favorito.ativo{color:#D85D65}
-    .mensagem{color:#68766B;text-align:center;padding:30px 10px}
-    .modal{position:fixed;inset:0;background:#0008;display:none;justify-content:center;align-items:center;padding:20px;z-index:10;overflow:auto}
-    .modal.ativo{display:flex}
-    .conteudo-modal{background:#fff;border-radius:18px;padding:25px;max-width:400px;width:100%;text-align:left;max-height:90vh;overflow:auto}
-    .conteudo-modal h2{color:#315E49;margin-bottom:10px}
-    .conteudo-modal p{color:#68766B;font-size:14px;line-height:1.5;margin-bottom:16px}
-    .botao{background:#315E49;color:white;border:0;padding:13px;width:100%;border-radius:10px;font-weight:bold;cursor:pointer;margin-bottom:9px}
-    .fechar{background:#F0F3ED;color:#315E49}
-    .campo{display:block;width:100%;padding:12px;border:1px solid #DCE3D9;border-radius:9px;margin:7px 0 13px;font-size:15px}
-    .detalhes img{width:100%;height:210px;object-fit:cover;border-radius:12px;margin-bottom:14px}
-    .detalhes h2{margin-bottom:8px}.detalhes p{margin-bottom:9px;color:#68766B;font-size:14px}
-    .aviso{font-size:12px!important;color:#68766B}
-    @media(max-width:380px){.casa img{width:82px;height:90px}.informacoes h3{font-size:14px}}
-  </style>
+  
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background: #F7F8FF;
+    color: #343746;
+  }
+
+  header {
+    background: #fff;
+    padding: 15px 16px;
+    border-bottom: 1px solid #E8EAF4;
+  }
+
+  .topo {
+    max-width: 700px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .marca h1 {
+    color: #5267D8;
+    font-size: 21px;
+  }
+
+  .marca p {
+    color: #737585;
+    font-size: 12px;
+    margin-top: 4px;
+  }
+
+  .perfil {
+    border: 0;
+    background: #E9EDFF;
+    color: #5267D8;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .admin-acesso {
+    border: 0;
+    background: #5267D8;
+    color: white;
+    padding: 10px 12px;
+    border-radius: 9px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  main {
+    max-width: 700px;
+    margin: auto;
+    padding: 15px;
+  }
+
+  /* APRESENTAÇÃO INICIAL */
+
+  .inicio-apresentacao {
+    background: #fff;
+    border: 1px solid #E8EAF4;
+    border-radius: 16px;
+    padding: 17px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+
+  .inicio-texto {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .inicio-etiqueta {
+    display: inline-block;
+    color: #5267D8;
+    background: #E9EDFF;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: .5px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
+
+  .inicio-texto h1 {
+    color: #343746;
+    font-size: 21px;
+    line-height: 1.2;
+    margin-bottom: 9px;
+  }
+
+  .inicio-texto p,
+  .secao-introducao p,
+  .como-encontrar p {
+    color: #737585;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 13px;
+  }
+
+  .inicio-ilustracao {
+    width: 112px;
+    flex-shrink: 0;
+  }
+
+  .inicio-ilustracao svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* BOTÕES */
+
+  .botao {
+    display: block;
+    background: #5267D8;
+    color: white;
+    border: 0;
+    padding: 12px 14px;
+    width: 100%;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 9px;
+    transition: background .2s;
+  }
+
+  .botao:hover,
+  .admin-acesso:hover {
+    background: #4053BD;
+  }
+
+  .botao:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+  }
+
+  .fechar {
+    background: #E9EDFF;
+    color: #5267D8;
+  }
+
+  .fechar:hover {
+    background: #DDE3FF;
+  }
+
+  /* COMO AJUDAR */
+
+  .como-ajudar {
+    margin-bottom: 24px;
+  }
+
+  .secao-introducao {
+    margin-bottom: 13px;
+  }
+
+  .secao-introducao h2,
+  .como-encontrar h2 {
+    font-size: 19px;
+    color: #343746;
+    margin-bottom: 7px;
+  }
+
+  .passos-indicacao {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-bottom: 13px;
+  }
+
+  .passo-indicacao {
+    background: #fff;
+    border: 1px solid #E8EAF4;
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .passo-numero {
+    width: 35px;
+    height: 35px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #E9EDFF;
+    color: #5267D8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  .passo-indicacao h3 {
+    color: #343746;
+    font-size: 14px;
+    margin: 2px 0 5px;
+  }
+
+  .passo-indicacao p {
+    color: #737585;
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .aviso-privacidade {
+    background: #E9EDFF;
+    border-radius: 11px;
+    padding: 13px;
+    margin-bottom: 13px;
+  }
+
+  .aviso-privacidade strong {
+    display: block;
+    color: #4053BD;
+    font-size: 13px;
+    margin-bottom: 5px;
+  }
+
+  .aviso-privacidade p {
+    color: #535C85;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  /* BUSCA DE IMÓVEIS */
+
+  .como-encontrar {
+    background: #fff;
+    border: 1px solid #E8EAF4;
+    border-radius: 14px;
+    padding: 15px;
+    margin-bottom: 17px;
+  }
+
+  .como-encontrar p {
+    margin-bottom: 0;
+  }
+
+  .area-busca {
+    margin-top: 8px;
+  }
+
+  .localizacao,
+  .busca {
+    background: #fff;
+    border: 1px solid #E8EAF4;
+    border-radius: 11px;
+    margin-bottom: 11px;
+  }
+
+  .localizacao {
+    padding: 13px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+
+  .localizacao small {
+    color: #737585;
+    display: block;
+    margin-bottom: 3px;
+    font-size: 11px;
+  }
+
+  .localizacao strong {
+    color: #343746;
+    font-size: 13px;
+  }
+
+  .busca {
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .busca input {
+    border: 0;
+    outline: 0;
+    width: 100%;
+    font-size: 14px;
+    color: #343746;
+    background: transparent;
+  }
+
+  .titulo-lista {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .titulo-lista h2 {
+    font-size: 17px;
+    color: #343746;
+  }
+
+  .titulo-lista span {
+    color: #737585;
+    font-size: 12px;
+  }
+
+  .casa {
+    background: #fff;
+    border: 1px solid #E8EAF4;
+    padding: 10px;
+    border-radius: 12px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+
+  .casa img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 9px;
+    flex-shrink: 0;
+    background: #E9EDFF;
+  }
+
+  .informacoes {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .informacoes h3 {
+    font-size: 15px;
+    margin-bottom: 7px;
+    color: #343746;
+  }
+
+  .informacoes p {
+    font-size: 12px;
+    color: #737585;
+    margin-bottom: 7px;
+  }
+
+  .preco {
+    color: #5267D8 !important;
+    font-weight: bold;
+    font-size: 14px !important;
+    margin-bottom: 0 !important;
+  }
+
+  .favorito {
+    background: transparent;
+    border: 0;
+    font-size: 24px;
+    color: #9A9BA8;
+    cursor: pointer;
+    padding: 5px;
+  }
+
+  .favorito.ativo {
+    color: #5267D8;
+  }
+
+  .mensagem {
+    color: #737585;
+    text-align: center;
+    padding: 30px 10px;
+    font-size: 13px;
+  }
+
+  /* MODAIS E FORMULÁRIOS */
+
+  .modal {
+    position: fixed;
+    inset: 0;
+    background: #34374699;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 10;
+    overflow: auto;
+  }
+
+  .modal.ativo {
+    display: flex;
+  }
+
+  .conteudo-modal {
+    background: #fff;
+    border: 1px solid #E8EAF4;
+    border-radius: 17px;
+    padding: 22px;
+    max-width: 400px;
+    width: 100%;
+    text-align: left;
+    max-height: 90vh;
+    overflow: auto;
+  }
+
+  .conteudo-modal h2 {
+    color: #5267D8;
+    margin-bottom: 10px;
+  }
+
+  .conteudo-modal p {
+    color: #737585;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .campo {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #DDE1F0;
+    border-radius: 9px;
+    margin: 7px 0 13px;
+    font-size: 15px;
+    background: #fff;
+    color: #343746;
+  }
+
+  .campo:focus {
+    outline: 2px solid #E9EDFF;
+    border-color: #5267D8;
+  }
+
+  .detalhes img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 14px;
+  }
+
+  .detalhes h2 {
+    margin-bottom: 8px;
+    color: #343746;
+  }
+
+  .detalhes p {
+    margin-bottom: 9px;
+    color: #737585;
+    font-size: 14px;
+  }
+
+  .aviso {
+    font-size: 12px !important;
+    color: #737585;
+  }
+
+  @media(max-width: 480px) {
+    main {
+      padding: 12px;
+    }
+
+    .inicio-apresentacao {
+      padding: 14px;
+    }
+
+    .inicio-texto h1 {
+      font-size: 19px;
+    }
+
+    .inicio-ilustracao {
+      width: 96px;
+    }
+  }
+
+  @media(max-width: 380px) {
+    .inicio-ilustracao {
+      width: 82px;
+    }
+
+    .inicio-texto h1 {
+      font-size: 17px;
+    }
+
+    .casa img {
+      width: 82px;
+      height: 90px;
+    }
+
+    .informacoes h3 {
+      font-size: 14px;
+    }
+  }
+</style>
+
 </head>
 <body>
 <header><div class="topo">
@@ -67,25 +527,146 @@
 <button class="perfil" onclick="abrirLogin()" aria-label="Minha conta">♙</button>
 </div></header>
 
-<main>
-  
-  <button
-  class="botao"
-  type="button"
-  onclick="abrirIndicacao()"
-  style="margin-bottom:16px"
->
-  + Enviar indicação de imóvel
-</button>
 
-  <div class="localizacao" onclick="solicitarLocalizacao()">
-    <span>📍</span><div><small>Sua localização</small><strong id="localTexto">Ative para ordenar por proximidade</strong></div><span style="margin-left:auto">⌄</span>
-  </div>
-  <div class="busca"><span>⌕</span><input id="pesquisa" type="text" placeholder="Buscar por bairro..." oninput="filtrarCasas()"></div>
-  <div class="titulo-lista"><h2>Casas para alugar</h2><span id="ordem">Mais recentes</span></div>
-  <div id="listaCasas"></div>
-  <div class="mensagem" id="semResultados">Carregando imóveis...</div>
+<main>
+
+  <section class="inicio-apresentacao">
+    <div class="inicio-texto">
+      <span class="inicio-etiqueta">ALUGUEL PORTO NACIONAL</span>
+      <h1>Uma placa de aluguel pode ajudar alguém a encontrar um lar.</h1>
+      <p>
+        Viu uma casa com placa de ALUGA-SE pela cidade?
+        Você pode ajudar o proprietário a encontrar um inquilino
+        e alguém a encontrar sua próxima casa.
+      </p>
+      <button class="botao" type="button" onclick="abrirIndicacao()">
+        + Quero indicar uma casa
+      </button>
+    </div>
+
+    <div class="inicio-ilustracao" aria-hidden="true">
+      <svg viewBox="0 0 160 180" xmlns="http://www.w3.org/2000/svg">
+        <rect x="13" y="25" width="134" height="142" rx="22" fill="#E9EDFF"/>
+        <path d="M39 83 L80 49 L121 83 V139 H39 Z" fill="#5267D8"/>
+        <path d="M30 84 L80 43 L130 84" fill="none" stroke="#4053BD" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="69" y="101" width="23" height="38" rx="3" fill="#F7F8FF"/>
+        <rect x="46" y="91" width="16" height="16" rx="2" fill="#F7F8FF"/>
+        <rect x="98" y="91" width="16" height="16" rx="2" fill="#F7F8FF"/>
+        <path d="M104 19 H145 V53 H104 Z" fill="#F8D7A4"/>
+        <path d="M110 29 H139 M110 37 H134" stroke="#4053BD" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </section>
+
+  <section class="como-ajudar">
+    <div class="secao-introducao">
+      <span class="inicio-etiqueta">É SIMPLES E GRATUITO</span>
+      <h2>Como você pode ajudar?</h2>
+      <p>Você não precisa ser dono de uma casa. Basta encontrar um imóvel com placa de aluguel.</p>
+    </div>
+
+    <div class="passos-indicacao">
+
+      <article class="passo-indicacao">
+        <div class="passo-numero">01</div>
+        <div>
+          <h3>Encontre uma casa</h3>
+          <p>Ao andar por Porto Nacional, fique atento às placas de ALUGA-SE nas casas.</p>
+        </div>
+      </article>
+
+      <article class="passo-indicacao">
+        <div class="passo-numero">02</div>
+        <div>
+          <h3>Fotografe a placa</h3>
+          <p>Tire uma foto em que seja possível ler o telefone de contato do anúncio.</p>
+        </div>
+      </article>
+
+      <article class="passo-indicacao">
+        <div class="passo-numero">03</div>
+        <div>
+          <h3>Envie a indicação</h3>
+          <p>Informe o bairro, o valor do aluguel se souber e alguns detalhes da casa.</p>
+        </div>
+      </article>
+
+      <article class="passo-indicacao">
+        <div class="passo-numero">04</div>
+        <div>
+          <h3>Aguarde a autorização</h3>
+          <p>Nossa equipe analisa a indicação e busca a autorização do responsável antes de publicar o imóvel.</p>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="aviso-privacidade">
+      <strong>Privacidade em primeiro lugar</strong>
+      <p>A indicação e a foto ficam privadas durante a análise. O imóvel só aparece para o público depois da autorização.</p>
+    </div>
+
+    <button class="botao" type="button" onclick="abrirIndicacao()">
+      Enviar indicação de imóvel
+    </button>
+  </section>
+
+  <section class="como-encontrar">
+    <span class="inicio-etiqueta">TAMBÉM ESTÁ PROCURANDO?</span>
+    <h2>Encontre casas para alugar em Porto Nacional</h2>
+    <p>
+      Consulte os imóveis disponíveis, confira fotos, valores,
+      bairros e características. Quando encontrar uma opção
+      interessante, entre em contato com o anunciante.
+    </p>
+  </section>
+
+  <section class="area-busca">
+    <div class="localizacao" onclick="solicitarLocalizacao()">
+      <svg viewBox="0 0 24 24" width="21" height="21" fill="none"
+           stroke="#5267D8" stroke-width="1.8"
+           stroke-linecap="round" stroke-linejoin="round"
+           aria-hidden="true">
+        <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/>
+        <circle cx="12" cy="10" r="2.5"/>
+      </svg>
+
+      <div>
+        <small>Sua localização</small>
+        <strong id="localTexto">Ative para ordenar por proximidade</strong>
+      </div>
+
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none"
+           stroke="#737585" stroke-width="1.8"
+           stroke-linecap="round" stroke-linejoin="round"
+           aria-hidden="true"
+           style="margin-left:auto">
+        <path d="m6 9 6 6 6-6"/>
+      </svg>
+    </div>
+
+    <div class="busca">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none"
+           stroke="#5267D8" stroke-width="1.8"
+           stroke-linecap="round" stroke-linejoin="round"
+           aria-hidden="true">
+        <circle cx="11" cy="11" r="7"/>
+        <path d="m20 20-4-4"/>
+      </svg>
+      <input id="pesquisa" type="text" placeholder="Buscar por bairro..." oninput="filtrarCasas()">
+    </div>
+
+    <div class="titulo-lista">
+      <h2>Casas para alugar</h2>
+      <span id="ordem">Mais recentes</span>
+    </div>
+
+    <div id="listaCasas"></div>
+    <div class="mensagem" id="semResultados">Carregando imóveis...</div>
+  </section>
+
 </main>
+
 
   
 <div class="modal" id="modalIndicacao">
