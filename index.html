@@ -1,0 +1,495 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#315E49">
+  <title>Aluguel Porto Nacional</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #F4F6F0;
+      color: #263B30;
+    }
+
+    header {
+      background: #FFFFFF;
+      padding: 18px 16px;
+      border-bottom: 1px solid #E5E9E2;
+    }
+
+    .topo {
+      max-width: 700px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .marca h1 {
+      color: #315E49;
+      font-size: 21px;
+    }
+
+    .marca p {
+      color: #68766B;
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .perfil {
+      border: none;
+      background: #F0F3ED;
+      color: #315E49;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    main {
+      max-width: 700px;
+      margin: auto;
+      padding: 16px;
+    }
+
+    .localizacao {
+      background: white;
+      padding: 14px;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .localizacao small {
+      color: #68766B;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .busca {
+      background: white;
+      border-radius: 12px;
+      padding: 13px;
+      display: flex;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .busca input {
+      border: none;
+      outline: none;
+      width: 100%;
+      font-size: 14px;
+      color: #263B30;
+      background: transparent;
+    }
+
+    .titulo-lista {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .titulo-lista h2 {
+      font-size: 17px;
+    }
+
+    .titulo-lista span {
+      color: #68766B;
+      font-size: 12px;
+    }
+
+    .casa {
+      background: white;
+      padding: 10px;
+      border-radius: 12px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .casa:hover {
+      transform: translateY(-2px);
+    }
+
+    .casa img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 9px;
+      flex-shrink: 0;
+    }
+
+    .informacoes {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .informacoes h3 {
+      font-size: 15px;
+      margin-bottom: 7px;
+    }
+
+    .informacoes p {
+      font-size: 12px;
+      color: #68766B;
+      margin-bottom: 7px;
+    }
+
+    .preco {
+      color: #315E49 !important;
+      font-weight: bold;
+      font-size: 14px !important;
+      margin-bottom: 0 !important;
+    }
+
+    .favorito {
+      background: transparent;
+      border: none;
+      font-size: 24px;
+      color: #9AA39B;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .favorito.ativo {
+      color: #D85D65;
+    }
+
+    .mensagem {
+      color: #68766B;
+      text-align: center;
+      padding: 30px 10px;
+      display: none;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: #0008;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      z-index: 10;
+    }
+
+    .modal.ativo {
+      display: flex;
+    }
+
+    .conteudo-modal {
+      background: white;
+      border-radius: 18px;
+      padding: 25px;
+      max-width: 360px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .conteudo-modal h2 {
+      color: #315E49;
+      margin-bottom: 10px;
+    }
+
+    .conteudo-modal p {
+      color: #68766B;
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .botao {
+      background: #315E49;
+      color: white;
+      border: none;
+      padding: 13px;
+      width: 100%;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 9px;
+    }
+
+    .fechar {
+      background: #F0F3ED;
+      color: #315E49;
+    }
+
+    .detalhes img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 14px;
+    }
+
+    .detalhes h2 {
+      margin-bottom: 8px;
+    }
+
+    .detalhes p {
+      margin-bottom: 9px;
+      color: #68766B;
+      font-size: 14px;
+    }
+
+    @media (max-width: 380px) {
+      .casa img {
+        width: 82px;
+        height: 90px;
+      }
+
+      .informacoes h3 {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="topo">
+    <div class="marca">
+      <h1>Aluguel Porto Nacional</h1>
+      <p>Encontre sua próxima casa.</p>
+    </div>
+    <button class="perfil" onclick="abrirLogin()">♙</button>
+  </div>
+</header>
+
+<main>
+
+  <div class="localizacao" onclick="solicitarLocalizacao()">
+    <span>📍</span>
+    <div>
+      <small>Sua localização</small>
+      <strong id="localTexto">Casas próximas de você</strong>
+    </div>
+    <span style="margin-left:auto">⌄</span>
+  </div>
+
+  <div class="busca">
+    <span>⌕</span>
+    <input id="pesquisa"
+      type="text"
+      placeholder="Buscar por bairro ou localização..."
+      oninput="filtrarCasas()">
+  </div>
+
+  <div class="titulo-lista">
+    <h2>Casas para alugar</h2>
+    <span id="ordem">Mais próximas</span>
+  </div>
+
+  <div id="listaCasas"></div>
+  <div class="mensagem" id="semResultados">
+    Nenhuma casa encontrada.
+  </div>
+
+</main>
+
+<div class="modal" id="modalLogin">
+  <div class="conteudo-modal">
+    <h2>Entre na sua conta</h2>
+    <p>Para salvar suas casas favoritas, você precisa entrar ou criar uma conta.</p>
+    <button class="botao" onclick="alert('Login será implementado na próxima etapa.')">
+      Entrar
+    </button>
+    <button class="botao fechar" onclick="alert('Cadastro será implementado na próxima etapa.')">
+      Criar conta
+    </button>
+    <button class="botao fechar" onclick="fecharModais()">
+      Agora não
+    </button>
+  </div>
+</div>
+
+<div class="modal" id="modalDetalhes">
+  <div class="conteudo-modal detalhes" id="detalhesCasa"></div>
+</div>
+
+<script>
+  const casas = [
+    {
+      id: 1,
+      bairro: "Centro",
+      distancia: 0.8,
+      preco: 850,
+      quartos: 2,
+      banheiros: 1,
+      garagem: "Sim",
+      descricao: "Casa aconchegante, com boa localização e espaço para sua família.",
+      imagem: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=500"
+    },
+    {
+      id: 2,
+      bairro: "Jardim Querido",
+      distancia: 1.5,
+      preco: 1000,
+      quartos: 3,
+      banheiros: 2,
+      garagem: "Sim",
+      descricao: "Casa espaçosa, ideal para famílias.",
+      imagem: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500"
+    },
+    {
+      id: 3,
+      bairro: "Novo Planalto",
+      distancia: 2.3,
+      preco: 750,
+      quartos: 2,
+      banheiros: 1,
+      garagem: "Não",
+      descricao: "Casa simples e confortável.",
+      imagem: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=500"
+    }
+  ];
+
+  let usuarioLogado = false;
+  let favoritos = [];
+
+  function renderizarCasas(lista = casas) {
+    const container = document.getElementById("listaCasas");
+    const mensagem = document.getElementById("semResultados");
+
+    container.innerHTML = "";
+
+    mensagem.style.display = lista.length ? "none" : "block";
+
+    lista.forEach(casa => {
+      const item = document.createElement("div");
+      item.className = "casa";
+
+      item.innerHTML = `
+        <img src="${casa.imagem}" alt="Fotografia de casa">
+        <div class="informacoes" onclick="abrirDetalhes(${casa.id})">
+          <h3>${casa.bairro}</h3>
+          <p>📍 ${casa.distancia.toFixed(1).replace(".", ",")} km de você</p>
+          <p class="preco">${formatarPreco(casa.preco)}/mês</p>
+        </div>
+        <button class="favorito ${favoritos.includes(casa.id) ? "ativo" : ""}"
+          onclick="alternarFavorito(event, ${casa.id})"
+          aria-label="Favoritar casa">
+          ${favoritos.includes(casa.id) ? "♥" : "♡"}
+        </button>
+      `;
+
+      item.addEventListener("click", e => {
+        if (e.target.closest(".favorito")) return;
+        if (e.target.closest(".informacoes")) return;
+        abrirDetalhes(casa.id);
+      });
+
+      container.appendChild(item);
+    });
+  }
+
+  function formatarPreco(valor) {
+    return valor.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL"
+    });
+  }
+
+  function filtrarCasas() {
+    const termo = document.getElementById("pesquisa").value
+      .toLowerCase();
+
+    const resultado = casas.filter(casa =>
+      casa.bairro.toLowerCase().includes(termo)
+    );
+
+    renderizarCasas(resultado);
+  }
+
+  function alternarFavorito(evento, id) {
+    evento.stopPropagation();
+
+    if (!usuarioLogado) {
+      document.getElementById("modalLogin").classList.add("ativo");
+      return;
+    }
+
+    if (favoritos.includes(id)) {
+      favoritos = favoritos.filter(item => item !== id);
+    } else {
+      favoritos.push(id);
+    }
+
+    renderizarCasas();
+  }
+
+  function abrirDetalhes(id) {
+    const casa = casas.find(item => item.id === id);
+
+    document.getElementById("detalhesCasa").innerHTML = `
+      <img src="${casa.imagem}" alt="Casa">
+      <h2>${casa.bairro}</h2>
+      <p>📍 ${casa.distancia.toFixed(1).replace(".", ",")} km de você</p>
+      <p><strong>${formatarPreco(casa.preco)}/mês</strong></p>
+      <p>${casa.quartos} quartos · ${casa.banheiros} banheiro(s)</p>
+      <p>Garagem: ${casa.garagem}</p>
+      <p>${casa.descricao}</p>
+      <button class="botao" onclick="alert('Contato será conectado na próxima etapa.')">
+        Entrar em contato
+      </button>
+      <button class="botao fechar" onclick="fecharModais()">
+        Voltar
+      </button>
+    `;
+
+    document.getElementById("modalDetalhes").classList.add("ativo");
+  }
+
+  function abrirLogin() {
+    document.getElementById("modalLogin").classList.add("ativo");
+  }
+
+  function fecharModais() {
+    document.querySelectorAll(".modal").forEach(modal => {
+      modal.classList.remove("ativo");
+    });
+  }
+
+  function solicitarLocalizacao() {
+    if (!navigator.geolocation) {
+      alert("Seu dispositivo não oferece suporte à localização.");
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      () => {
+        document.getElementById("localTexto").textContent =
+          "Localização autorizada";
+        alert("Localização recebida! A ordenação real será implementada na próxima etapa.");
+      },
+      () => {
+        alert("Não foi possível acessar sua localização. Você ainda pode pesquisar por bairro.");
+      }
+    );
+  }
+
+  renderizarCasas();
+</script>
+
+</body>
+</html>
