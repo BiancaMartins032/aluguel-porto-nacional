@@ -112,10 +112,29 @@
     const {data:{session}}=await supabaseClient.auth.getSession();
     usuario=session?.user||null;
     atualizarBotaoConta();
-    if(usuario) await carregarFavoritos();
+    if(usuario){
+  await carregarFavoritos();
+  await verificarAdministrador();
+}
     else favoritos=[];
     renderizarCasas();
   }
+  async function verificarAdministrador(){
+  if(!usuario)return;
+
+  const {data,error}=await supabaseClient.functions.invoke("quick-responder");
+
+  if(error){
+    console.error("Erro ao verificar administrador:",error);
+    return;
+  }
+
+  if(data?.ok && data?.administrador){
+    console.log("Aluguel Porto Nacional: acesso administrativo confirmado!");
+  }else{
+    console.log("Conta sem autorização administrativa.");
+  }
+}
 
   async function carregarCasas(){
     if(!supabaseClient)return;
