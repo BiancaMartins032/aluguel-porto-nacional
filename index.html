@@ -652,6 +652,36 @@ main {
   }
 }
 
+  
+/* ILUSTRAÇÕES DAS ETAPAS */
+
+.passo-icone {
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  border-radius: 13px;
+  background: #FFFFFF;
+  border: 1px solid #DCE3FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.passo-icone svg {
+  width: 36px;
+  height: 36px;
+  display: block;
+}
+
+.passo-indicacao {
+  align-items: center;
+}
+
+.passo-indicacao > div:last-child {
+  flex: 1;
+  min-width: 0;
+}
+
 </style>
 
 </head>
@@ -708,41 +738,68 @@ main {
       <p>Você não precisa ser dono de uma casa. Basta encontrar um imóvel com placa de aluguel.</p>
     </div>
 
-    <div class="passos-indicacao">
+    
+<div class="passos-indicacao">
 
-      <article class="passo-indicacao">
-        <div class="passo-numero">01</div>
-        <div>
-          <h3>Encontre uma casa</h3>
-          <p>Ao andar por Porto Nacional, fique atento às placas de ALUGA-SE nas casas.</p>
-        </div>
-      </article>
-
-      <article class="passo-indicacao">
-        <div class="passo-numero">02</div>
-        <div>
-          <h3>Fotografe a placa</h3>
-          <p>Tire uma foto em que seja possível ler o telefone de contato do anúncio.</p>
-        </div>
-      </article>
-
-      <article class="passo-indicacao">
-        <div class="passo-numero">03</div>
-        <div>
-          <h3>Envie a indicação</h3>
-          <p>Informe o bairro, o valor do aluguel se souber e alguns detalhes da casa.</p>
-        </div>
-      </article>
-
-      <article class="passo-indicacao">
-        <div class="passo-numero">04</div>
-        <div>
-          <h3>Aguarde a autorização</h3>
-          <p>Nossa equipe analisa a indicação e busca a autorização do responsável antes de publicar o imóvel.</p>
-        </div>
-      </article>
-
+  <article class="passo-indicacao">
+    <div class="passo-icone">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 22L24 7L43 22" stroke="#5267D8" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10 20V41H38V20" stroke="#5267D8" stroke-width="2.8" stroke-linejoin="round"/>
+        <path d="M20 41V28H29V41" stroke="#5267D8" stroke-width="2.8" stroke-linejoin="round"/>
+        <path d="M33 8H43V17H33" fill="#D97732" stroke="#D97732" stroke-width="2" stroke-linejoin="round"/>
+      </svg>
     </div>
+    <div>
+      <h3>Encontre uma casa</h3>
+      <p>Ao andar por Porto Nacional, fique atento às placas de ALUGA-SE nas casas.</p>
+    </div>
+  </article>
+
+  <article class="passo-indicacao">
+    <div class="passo-icone">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8" y="5" width="32" height="38" rx="6" stroke="#5267D8" stroke-width="2.8"/>
+        <circle cx="24" cy="23" r="8" stroke="#5267D8" stroke-width="2.8"/>
+        <path d="M18 37H30" stroke="#D97732" stroke-width="3" stroke-linecap="round"/>
+        <path d="M17 5L20 2H28L31 5" stroke="#5267D8" stroke-width="2.5" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div>
+      <h3>Fotografe a placa</h3>
+      <p>Tire uma foto em que seja possível ler o telefone de contato do anúncio.</p>
+    </div>
+  </article>
+
+  <article class="passo-indicacao">
+    <div class="passo-icone">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7 10H41V34H24L14 42V34H7V10Z" stroke="#5267D8" stroke-width="2.8" stroke-linejoin="round"/>
+        <path d="M15 18H33M15 25H28" stroke="#5267D8" stroke-width="2.8" stroke-linecap="round"/>
+        <path d="M34 29L38 33L45 25" stroke="#D97732" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div>
+      <h3>Envie a indicação</h3>
+      <p>Informe o bairro, o valor do aluguel se souber e alguns detalhes da casa.</p>
+    </div>
+  </article>
+
+  <article class="passo-indicacao">
+    <div class="passo-icone">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M24 4L40 10V22C40 32 33 39 24 44C15 39 8 32 8 22V10L24 4Z" stroke="#5267D8" stroke-width="2.8" stroke-linejoin="round"/>
+        <path d="M16 24L22 30L33 18" stroke="#D97732" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div>
+      <h3>Aguarde a autorização</h3>
+      <p>Nossa equipe analisa a indicação e busca a autorização do responsável antes de publicar o imóvel.</p>
+    </div>
+  </article>
+
+</div>
+
 
     <div class="aviso-privacidade">
       <strong>Privacidade em primeiro lugar</strong>
