@@ -442,148 +442,214 @@ main {
 
   /* BUSCA DE IMÓVEIS */
 
+  
+.como-encontrar {
+  background: #FFFFFF;
+  border: 1px solid #E3E7F2;
+  border-radius: 18px;
+  padding: 20px;
+  margin-bottom: 22px;
+  box-shadow: 0 4px 16px rgba(20, 38, 100, 0.04);
+}
+
+.como-encontrar p {
+  margin-bottom: 0;
+}
+
+.area-busca {
+  margin-top: 12px;
+}
+
+.localizacao,
+.busca {
+  background: #FFFFFF;
+  border: 1px solid #DCE2EF;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.localizacao {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: border-color .2s, background .2s;
+}
+
+.localizacao:hover {
+  border-color: #3156C8;
+  background: #F8FAFF;
+}
+
+.localizacao small {
+  color: #737D91;
+  display: block;
+  margin-bottom: 4px;
+  font-size: 11px;
+}
+
+.localizacao strong {
+  color: #173A7A;
+  font-size: 13px;
+}
+
+.busca {
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 22px;
+}
+
+.busca:focus-within {
+  border-color: #3156C8;
+  box-shadow: 0 0 0 3px rgba(49, 86, 200, 0.08);
+}
+
+.busca input {
+  border: 0;
+  outline: 0;
+  width: 100%;
+  font-size: 14px;
+  color: #343746;
+  background: transparent;
+}
+
+.busca input::placeholder {
+  color: #9299A8;
+}
+
+.titulo-lista {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.titulo-lista h2 {
+  font-size: 19px;
+  color: #173A7A;
+  font-weight: 800;
+}
+
+.titulo-lista span {
+  color: #737D91;
+  font-size: 12px;
+}
+
+.casa {
+  background: #FFFFFF;
+  border: 1px solid #E3E7F2;
+  padding: 12px;
+  border-radius: 15px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 13px;
+  cursor: pointer;
+  box-shadow: 0 3px 12px rgba(20, 38, 100, 0.04);
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.casa:hover {
+  border-color: #B9C7EA;
+  box-shadow: 0 5px 16px rgba(20, 38, 100, 0.08);
+}
+
+.casa img {
+  width: 116px;
+  height: 112px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+  background: #EEF1F8;
+}
+
+.informacoes {
+  flex: 1;
+  min-width: 0;
+}
+
+.informacoes h3 {
+  font-size: 15px;
+  line-height: 1.35;
+  margin-bottom: 8px;
+  color: #173A7A;
+  font-weight: 700;
+}
+
+.informacoes p {
+  font-size: 12px;
+  line-height: 1.45;
+  color: #737D91;
+  margin-bottom: 7px;
+}
+
+.preco {
+  color: #3156C8 !important;
+  font-weight: 800;
+  font-size: 15px !important;
+  margin-bottom: 0 !important;
+}
+
+.favorito {
+  background: #F5F7FC;
+  border: 0;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  font-size: 21px;
+  color: #9299A8;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.favorito.ativo {
+  color: #FE6C01;
+  background: #FFF0E5;
+}
+
+.mensagem {
+  color: #737D91;
+  text-align: center;
+  padding: 35px 12px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media (max-width: 380px) {
   .como-encontrar {
-    background: #fff;
-    border: 1px solid #E8EAF4;
-    border-radius: 14px;
-    padding: 15px;
-    margin-bottom: 17px;
-  }
-
-  .como-encontrar p {
-    margin-bottom: 0;
-  }
-
-  .area-busca {
-    margin-top: 8px;
-  }
-
-  .localizacao,
-  .busca {
-    background: #fff;
-    border: 1px solid #E8EAF4;
-    border-radius: 11px;
-    margin-bottom: 11px;
-  }
-
-  .localizacao {
-    padding: 13px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-  }
-
-  .localizacao small {
-    color: #737585;
-    display: block;
-    margin-bottom: 3px;
-    font-size: 11px;
-  }
-
-  .localizacao strong {
-    color: #343746;
-    font-size: 13px;
-  }
-
-  .busca {
-    padding: 12px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-
-  .busca input {
-    border: 0;
-    outline: 0;
-    width: 100%;
-    font-size: 14px;
-    color: #343746;
-    background: transparent;
-  }
-
-  .titulo-lista {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-  }
-
-  .titulo-lista h2 {
-    font-size: 17px;
-    color: #343746;
-  }
-
-  .titulo-lista span {
-    color: #737585;
-    font-size: 12px;
+    padding: 14px;
   }
 
   .casa {
-    background: #fff;
-    border: 1px solid #E8EAF4;
-    padding: 10px;
-    border-radius: 12px;
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    margin-bottom: 10px;
-    cursor: pointer;
+    gap: 10px;
+    padding: 9px;
   }
 
   .casa img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 9px;
-    flex-shrink: 0;
-    background: #E9EDFF;
-  }
-
-  .informacoes {
-    flex: 1;
-    min-width: 0;
+    width: 92px;
+    height: 96px;
   }
 
   .informacoes h3 {
-    font-size: 15px;
-    margin-bottom: 7px;
-    color: #343746;
-  }
-
-  .informacoes p {
-    font-size: 12px;
-    color: #737585;
-    margin-bottom: 7px;
+    font-size: 13px;
   }
 
   .preco {
-    color: #5267D8 !important;
-    font-weight: bold;
-    font-size: 14px !important;
-    margin-bottom: 0 !important;
+    font-size: 13px !important;
   }
 
   .favorito {
-    background: transparent;
-    border: 0;
-    font-size: 24px;
-    color: #9A9BA8;
-    cursor: pointer;
-    padding: 5px;
+    width: 31px;
+    height: 31px;
+    font-size: 19px;
   }
-
-  .favorito.ativo {
-    color: #D97732;
 }
 
-  .mensagem {
-    color: #737585;
-    text-align: center;
-    padding: 30px 10px;
-    font-size: 13px;
-  }
 
   /* MODAIS E FORMULÁRIOS */
 
