@@ -1,0 +1,15 @@
+
+{
+  "id": "/",
+  "name": "Aluguel Porto Nacional",
+  "short_name": "Aluguel PN",
+  "description": "Encontre casas para alugar em Porto Nacional - TO.",
+  "lang": "pt-BR",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F7F8FF",
+  "theme_color": "#5267D8",
+  "categories": ["lifestyle", "business"]
+}
