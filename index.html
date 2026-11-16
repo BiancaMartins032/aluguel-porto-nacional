@@ -70,13 +70,13 @@
 <main>
   
   <button
-    class="botao"
-    type="button"
-    onclick="abrirIndicacao()"
-    style="margin-bottom:16px"
-  >
-    + Indicar uma casa para alugar
-  </button>
+  class="botao"
+  type="button"
+  onclick="abrirIndicacao()"
+  style="margin-bottom:16px"
+>
+  + Enviar indicação de imóvel
+</button>
 
   <div class="localizacao" onclick="solicitarLocalizacao()">
     <span>📍</span><div><small>Sua localização</small><strong id="localTexto">Ative para ordenar por proximidade</strong></div><span style="margin-left:auto">⌄</span>
@@ -90,8 +90,27 @@
   
 <div class="modal" id="modalIndicacao">
   <div class="conteudo-modal">
-    <h2>Indicar uma casa</h2>
-    <p>Ajude alguém a encontrar uma casa para alugar em Porto Nacional.</p>
+    <h2>Ajude alguém a encontrar uma casa!</h2>
+
+    <p>
+      Você encontrou uma casa com placa de aluguel?
+      Ajude o proprietário a divulgar o imóvel para quem está procurando
+      uma casa em Porto Nacional.
+    </p>
+
+    <h3>Como funciona?</h3>
+
+    <ol>
+      <li>Tire uma foto da placa de aluguel em frente à casa.</li>
+      <li>Informe o bairro, o valor do aluguel e as características do imóvel.</li>
+      <li>Nossa equipe analisará a indicação e verificará a autorização do proprietário.</li>
+    </ol>
+
+    <p><strong>É gratuito!</strong> Você não precisa ser o proprietário para enviar uma indicação.</p>
+
+    <p class="aviso">
+      A indicação ficará privada. O imóvel só será publicado depois da autorização do proprietário.
+    </p>
 
     <form id="formIndicacao">
       <label for="indicacaoBairro">Bairro</label>
