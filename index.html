@@ -1240,18 +1240,23 @@ main {
 </head>
 <body>
 
+
 <header>
   <div class="topo">
 
     <div class="marca">
-      <div class="marca-icone" aria-hidden="true">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M5 22L24 7L43 22" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M10 20V41H38V20" fill="white"/>
-          <path d="M20 41V28H29V41" fill="#173A7A"/>
-          <path d="M33 8H43V18H33Z" fill="#FE6C01"/>
-        </svg>
-      </div>
+      <svg class="logo-marca" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#FE6C01"/>
+        <path d="M10 30L32 12L54 30" fill="none"
+          stroke="#FFFFFF" stroke-width="5"
+          stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M17 27V51H47V27" fill="none"
+          stroke="#FFFFFF" stroke-width="4"
+          stroke-linejoin="round"/>
+        <path d="M27 51V36H37V51" fill="none"
+          stroke="#FFFFFF" stroke-width="3.5"
+          stroke-linejoin="round"/>
+      </svg>
 
       <div class="marca-texto">
         <h1>Aluguel Porto Nacional</h1>
@@ -1259,32 +1264,47 @@ main {
       </div>
     </div>
 
-    <button
-      id="botaoAdmin"
-      class="admin-acesso"
-      style="display:none"
-      onclick="abrirPainelAdmin()"
-    >
-      Administração
-    </button>
+    <div class="acoes-topo">
 
-    <button
-      class="perfil"
-      type="button"
-      onclick="abrirLogin()"
-      aria-label="Minha conta"
-    >
-      <svg viewBox="0 0 24 24" width="23" height="23" fill="none"
-           stroke="currentColor" stroke-width="1.8"
-           stroke-linecap="round" stroke-linejoin="round"
-           aria-hidden="true">
-        <circle cx="12" cy="8" r="4"/>
-        <path d="M4.5 21C4.5 16.9 7.8 14 12 14C16.2 14 19.5 16.9 19.5 21"/>
-      </svg>
-    </button>
+      <button
+        id="botaoAdmin"
+        class="admin-acesso"
+        style="display:none"
+        onclick="abrirPainelAdmin()"
+      >
+        Administração
+      </button>
 
+      <details class="menu-topo">
+        <summary aria-label="Abrir menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </summary>
+
+        <div class="menu-conteudo">
+          <a href="#listaCasas">Buscar casas</a>
+          <button type="button" onclick="abrirIndicacao()">
+            Indicar uma casa
+          </button>
+          <button type="button" onclick="abrirLogin()">
+            Minha conta
+          </button>
+        </div>
+      </details>
+
+      <button
+        class="perfil"
+        onclick="abrirLogin()"
+        aria-label="Minha conta"
+      >
+        ♙
+      </button>
+
+    </div>
   </div>
 </header>
+
 
 
 <div id="areaInstalacao" class="area-instalacao" style="display:none;">
