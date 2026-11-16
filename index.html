@@ -162,17 +162,17 @@ main {
 
   
 
+
 .inicio-apresentacao {
   background: #FFFFFF;
   border: 1px solid #E3E7F2;
-  border-radius: 22px;
-  padding: 30px;
+  border-radius: 20px;
+  padding: 28px;
   display: flex;
   align-items: center;
-  gap: 32px;
-  margin-bottom: 32px;
-  min-height: 330px;
-  box-shadow: 0 8px 26px rgba(20, 38, 100, 0.08);
+  gap: 28px;
+  margin-bottom: 30px;
+  box-shadow: 0 6px 22px rgba(20, 38, 100, 0.08);
 }
 
 .inicio-texto {
@@ -184,50 +184,83 @@ main {
   display: inline-block;
   color: #FFFFFF;
   background: #173A7A;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 800;
   letter-spacing: 1px;
-  padding: 8px 12px;
+  padding: 7px 11px;
   border-radius: 6px;
-  margin-bottom: 18px;
+  margin-bottom: 15px;
 }
 
 .inicio-texto h1 {
-  color: #172B59;
-  font-size: 36px;
-  line-height: 1.16;
-  margin-bottom: 16px;
+  color: #17265B;
+  font-size: 29px;
+  line-height: 1.18;
+  margin-bottom: 13px;
   font-weight: 800;
-  max-width: 540px;
 }
 
 .inicio-texto p,
 .secao-introducao p,
 .como-encontrar p {
   color: #626B80;
-  font-size: 15px;
-  line-height: 1.65;
-  margin-bottom: 22px;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 18px;
 }
 
 .inicio-ilustracao {
-  width: 42%;
-  max-width: 440px;
-  min-height: 270px;
+  width: 36%;
+  max-width: 260px;
   flex-shrink: 0;
-  background: linear-gradient(145deg, #E8EEFF, #D5E1FF);
-  border-radius: 17px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
 }
 
 .inicio-ilustracao svg {
   display: block;
-  width: 75%;
-  max-width: 250px;
+  width: 100%;
   height: auto;
+}
+
+/* Botão de destaque do cartão inicial */
+.inicio-apresentacao .botao {
+  background: #FE6C01;
+  color: #FFFFFF;
+  border-radius: 9px;
+  padding: 14px 18px;
+  font-size: 14px;
+  font-weight: 800;
+  box-shadow: 0 4px 10px rgba(254, 108, 1, 0.18);
+}
+
+.inicio-apresentacao .botao:hover {
+  background: #E65F00;
+}
+
+@media (max-width: 600px) {
+  .inicio-apresentacao {
+    padding: 18px;
+    gap: 12px;
+    border-radius: 16px;
+  }
+
+  .inicio-texto h1 {
+    font-size: 21px;
+  }
+
+  .inicio-texto p {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .inicio-ilustracao {
+    width: 34%;
+    max-width: 125px;
+  }
+
+  .inicio-apresentacao .botao {
+    font-size: 12px;
+    padding: 12px 10px;
+  }
 }
 
 /* BOTÃO PRINCIPAL DO DESTAQUE */
