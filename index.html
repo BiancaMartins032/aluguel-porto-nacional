@@ -167,14 +167,6 @@ async function verificarAdministrador(){
     return;
   }
 
-  if(data?.ok && data?.administrador){
-    if(botao) botao.style.display = "inline-block";
-    console.log("Aluguel Porto Nacional: acesso administrativo confirmado!");
-  }else{
-    console.log("Conta sem autorização administrativa.");
-  }
-}
-
 async function abrirPainelAdmin(){
   const lista = document.getElementById("listaIndicacoes");
 
@@ -207,15 +199,6 @@ async function abrirPainelAdmin(){
   lista.textContent = data.total === 0
     ? "Nenhuma indicação pendente no momento."
     : `Foram encontradas ${data.total} indicações.`;
-}
-
-
-  if(data?.ok && data?.administrador){
-    if(botao) botao.style.display = "inline-block";
-    console.log("Aluguel Porto Nacional: acesso administrativo confirmado!");
-  }else{
-    console.log("Conta sem autorização administrativa.");
-  }
 }
 
   async function carregarCasas(){
