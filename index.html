@@ -797,6 +797,98 @@ main {
   margin-bottom: 0;
 }
 
+.seletor-publicacao {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.seletor-publicacao .opcao-cabecalho {
+  min-width: 0;
+  min-height: 125px;
+  padding: 15px 8px;
+  border: 1px solid #D5DCFF;
+  border-radius: 17px;
+  background: #E9EDFF;
+  color: #343746;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  text-align: center;
+  cursor: pointer;
+  font: inherit;
+  transition: border-color .2s, background .2s;
+}
+
+.seletor-publicacao .opcao-cabecalho:nth-child(2) {
+  background: #F7F8FF;
+  border-color: #E8B58F;
+}
+
+.seletor-publicacao .opcao-cabecalho svg {
+  width: 34px;
+  height: 34px;
+}
+
+.seletor-publicacao .opcao-cabecalho strong {
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.seletor-publicacao .opcao-cabecalho small {
+  font-size: 11px;
+  color: #737585;
+}
+
+.seletor-publicacao .opcao-cabecalho[aria-expanded="true"] {
+  border: 2px solid #5267D8;
+  background: #E1E7FF;
+}
+
+.seletor-publicacao .opcao-cabecalho:nth-child(2)[aria-expanded="true"] {
+  border-color: #D97732;
+  background: #FCE8D8;
+}
+
+.indicador-selecao {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.opcao-cabecalho[aria-expanded="true"] .indicador-selecao {
+  background: #5267D8;
+}
+
+.opcao-cabecalho:nth-child(2)[aria-expanded="true"] .indicador-selecao {
+  background: #D97732;
+}
+
+.opcao-conteudo {
+  margin-top: 12px;
+}
+
+.opcao-conteudo[hidden] {
+  display: none !important;
+}
+
+.opcao-descricao {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #343746;
+}
+
+.texto-proprietario-em-breve {
+  color: #737585;
+  font-size: 13px;
+  text-align: center;
+  margin-top: 14px;
+}
+
 </style>
 
 </head>
@@ -847,161 +939,155 @@ main {
   </section>
 
   
+
 <section class="como-ajudar">
+
   <div class="secao-introducao">
     <span class="inicio-etiqueta">ANUNCIE OU AJUDE ALGUÉM</span>
     <h2>Como você quer publicar?</h2>
-    <p>Escolha a opção que combina com você.</p>
+    <p>Escolha uma das opções abaixo.</p>
   </div>
 
-  <div class="opcoes-publicacao">
+  <div class="seletor-publicacao">
 
-    <!-- OPÇÃO 1: INDICAÇÃO -->
-    <article class="opcao-publicacao indicacao">
-      <button
-        class="opcao-cabecalho"
-        type="button"
-        aria-expanded="false"
-        aria-controls="conteudoIndicacao"
-        onclick="alternarPublicacao('conteudoIndicacao', this)"
-      >
-        <span class="opcao-icone">
+    <button
+      class="opcao-cabecalho"
+      type="button"
+      aria-expanded="false"
+      aria-controls="conteudoIndicacao"
+      onclick="alternarPublicacao('conteudoIndicacao', this)"
+    >
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8" y="5" width="32" height="38" rx="6" stroke="#5267D8" stroke-width="2.8"/>
+        <circle cx="24" cy="23" r="8" stroke="#5267D8" stroke-width="2.8"/>
+        <path d="M18 37H30" stroke="#D97732" stroke-width="3" stroke-linecap="round"/>
+        <path d="M17 5L20 2H28L31 5" stroke="#5267D8" stroke-width="2.5"/>
+      </svg>
+      <strong>Indicar uma casa</strong>
+      <small>Não sou proprietário</small>
+      <span class="indicador-selecao"></span>
+    </button>
+
+    <button
+      class="opcao-cabecalho"
+      type="button"
+      aria-expanded="false"
+      aria-controls="conteudoProprietario"
+      onclick="alternarPublicacao('conteudoProprietario', this)"
+    >
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 22L24 7L43 22" stroke="#D97732" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10 20V41H38V20" stroke="#D97732" stroke-width="2.8" stroke-linejoin="round"/>
+        <path d="M20 41V28H29V41" stroke="#D97732" stroke-width="2.8"/>
+      </svg>
+      <strong>Meu imóvel</strong>
+      <small>Sou proprietário</small>
+      <span class="indicador-selecao"></span>
+    </button>
+
+  </div>
+
+  <!-- CONTEÚDO DA INDICAÇÃO -->
+  <div class="opcao-conteudo" id="conteudoIndicacao" hidden>
+
+    <p class="opcao-descricao">
+      Encontrou uma casa com placa de ALUGA-SE?
+      Fotografe a placa e ajude alguém a encontrar um lar.
+    </p>
+
+    <div class="passos-indicacao">
+
+      <article class="passo-indicacao">
+        <div class="passo-icone">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 22L24 7L43 22" stroke="#5267D8" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 20V41H38V20" stroke="#5267D8" stroke-width="2.8"/>
+            <path d="M20 41V28H29V41" stroke="#5267D8" stroke-width="2.8"/>
+            <path d="M33 8H43V17H33" fill="#D97732" stroke="#D97732" stroke-width="2"/>
+          </svg>
+        </div>
+        <div>
+          <h3>Encontre uma casa</h3>
+          <p>Fique atento às placas de ALUGA-SE pela cidade.</p>
+        </div>
+      </article>
+
+      <article class="passo-indicacao">
+        <div class="passo-icone">
           <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="8" y="5" width="32" height="38" rx="6" stroke="#5267D8" stroke-width="2.8"/>
             <circle cx="24" cy="23" r="8" stroke="#5267D8" stroke-width="2.8"/>
             <path d="M18 37H30" stroke="#D97732" stroke-width="3" stroke-linecap="round"/>
-            <path d="M17 5L20 2H28L31 5" stroke="#5267D8" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M17 5L20 2H28L31 5" stroke="#5267D8" stroke-width="2.5"/>
           </svg>
-        </span>
-
-        <span class="opcao-texto">
-          <strong>Encontrei uma casa para alugar</strong>
-          <small>Não sou o proprietário · Vou indicar uma casa</small>
-        </span>
-
-        <svg class="opcao-seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="m6 9 6 6 6-6"/>
-        </svg>
-      </button>
-
-      <div class="opcao-conteudo" id="conteudoIndicacao" hidden>
-        <p class="opcao-descricao">
-          Viu uma casa com placa de ALUGA-SE? Fotografe a placa e ajude o proprietário a encontrar um inquilino.
-        </p>
-
-        <div class="passos-indicacao">
-
-          <article class="passo-indicacao">
-            <div class="passo-icone">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 22L24 7L43 22" stroke="#5267D8" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M10 20V41H38V20" stroke="#5267D8" stroke-width="2.8" stroke-linejoin="round"/>
-                <path d="M20 41V28H29V41" stroke="#5267D8" stroke-width="2.8" stroke-linejoin="round"/>
-                <path d="M33 8H43V17H33" fill="#D97732" stroke="#D97732" stroke-width="2"/>
-              </svg>
-            </div>
-            <div>
-              <h3>Encontre uma casa</h3>
-              <p>Fique atento às placas de ALUGA-SE pela cidade.</p>
-            </div>
-          </article>
-
-          <article class="passo-indicacao">
-            <div class="passo-icone">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="8" y="5" width="32" height="38" rx="6" stroke="#5267D8" stroke-width="2.8"/>
-                <circle cx="24" cy="23" r="8" stroke="#5267D8" stroke-width="2.8"/>
-                <path d="M18 37H30" stroke="#D97732" stroke-width="3" stroke-linecap="round"/>
-                <path d="M17 5L20 2H28L31 5" stroke="#5267D8" stroke-width="2.5"/>
-              </svg>
-            </div>
-            <div>
-              <h3>Fotografe a placa</h3>
-              <p>Tire uma foto em que seja possível ler o telefone.</p>
-            </div>
-          </article>
-
-          <article class="passo-indicacao">
-            <div class="passo-icone">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7 10H41V34H24L14 42V34H7V10Z" stroke="#5267D8" stroke-width="2.8" stroke-linejoin="round"/>
-                <path d="M15 18H33M15 25H28" stroke="#5267D8" stroke-width="2.8" stroke-linecap="round"/>
-                <path d="M34 29L38 33L45 25" stroke="#D97732" stroke-width="3" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div>
-              <h3>Envie a indicação</h3>
-              <p>Informe o bairro, o aluguel e os detalhes que souber.</p>
-            </div>
-          </article>
-
-          <article class="passo-indicacao">
-            <div class="passo-icone">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M24 4L40 10V22C40 32 33 39 24 44C15 39 8 32 8 22V10L24 4Z" stroke="#5267D8" stroke-width="2.8"/>
-                <path d="M16 24L22 30L33 18" stroke="#D97732" stroke-width="3.5" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div>
-              <h3>Aguarde a autorização</h3>
-              <p>A equipe analisa a indicação antes de qualquer publicação.</p>
-            </div>
-          </article>
-
         </div>
-
-        <div class="aviso-privacidade">
-          <strong>Privacidade em primeiro lugar</strong>
-          <p>A indicação e a foto ficam privadas durante a análise. O imóvel só aparece depois da autorização.</p>
+        <div>
+          <h3>Fotografe a placa</h3>
+          <p>Tire uma foto em que seja possível ler o telefone.</p>
         </div>
+      </article>
 
-        <button class="botao" type="button" onclick="abrirIndicacao()">
-          Enviar indicação de imóvel
-        </button>
-      </div>
-    </article>
-
-    <!-- OPÇÃO 2: PROPRIETÁRIO -->
-    <article class="opcao-publicacao proprietario">
-      <button
-        class="opcao-cabecalho"
-        type="button"
-        aria-expanded="false"
-        aria-controls="conteudoProprietario"
-        onclick="alternarPublicacao('conteudoProprietario', this)"
-      >
-        <span class="opcao-icone">
+      <article class="passo-indicacao">
+        <div class="passo-icone">
           <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5 22L24 7L43 22" stroke="#D97732" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M10 20V41H38V20" stroke="#D97732" stroke-width="2.8" stroke-linejoin="round"/>
-            <path d="M20 41V28H29V41" stroke="#D97732" stroke-width="2.8"/>
-            <path d="M32 7H43V17H32" fill="#D97732"/>
+            <path d="M7 10H41V34H24L14 42V34H7V10Z" stroke="#5267D8" stroke-width="2.8" stroke-linejoin="round"/>
+            <path d="M15 18H33M15 25H28" stroke="#5267D8" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M34 29L38 33L45 25" stroke="#D97732" stroke-width="3" stroke-linecap="round"/>
           </svg>
-        </span>
+        </div>
+        <div>
+          <h3>Envie a indicação</h3>
+          <p>Informe o bairro, o aluguel e os detalhes que souber.</p>
+        </div>
+      </article>
 
-        <span class="opcao-texto">
-          <strong>Quero anunciar meu imóvel</strong>
-          <small>Sou o proprietário · Quero cadastrar minha casa</small>
-        </span>
+      <article class="passo-indicacao">
+        <div class="passo-icone">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 4L40 10V22C40 32 33 39 24 44C15 39 8 32 8 22V10L24 4Z" stroke="#5267D8" stroke-width="2.8"/>
+            <path d="M16 24L22 30L33 18" stroke="#D97732" stroke-width="3.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <h3>Aguarde a autorização</h3>
+          <p>A equipe analisa a indicação antes da publicação.</p>
+        </div>
+      </article>
 
-        <svg class="opcao-seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="m6 9 6 6 6-6"/>
-        </svg>
-      </button>
+    </div>
 
-      <div class="opcao-conteudo" id="conteudoProprietario" hidden>
-        <p class="opcao-descricao">
-          Cadastre sua casa, adicione fotos e informe os detalhes do aluguel. Seu anúncio passará por análise antes de ficar visível.
-        </p>
+    <div class="aviso-privacidade">
+      <strong>Privacidade em primeiro lugar</strong>
+      <p>A indicação e a foto ficam privadas durante a análise. O imóvel só aparece depois da autorização.</p>
+    </div>
 
-        <p class="aviso-privacidade">
-          O cadastro do proprietário será disponibilizado nesta área após configurarmos o envio seguro e a análise administrativa.
-        </p>
-      </div>
-    </article>
+    <button class="botao" type="button" onclick="abrirIndicacao()">
+      Enviar indicação de imóvel
+    </button>
 
   </div>
+
+  <!-- CONTEÚDO DO PROPRIETÁRIO -->
+  <div class="opcao-conteudo" id="conteudoProprietario" hidden>
+
+    <p class="opcao-descricao">
+      É proprietário? Cadastre sua casa, adicione fotos
+      e informe os detalhes para encontrar um inquilino.
+    </p>
+
+    <div class="aviso-privacidade">
+      <strong>Seu imóvel será analisado</strong>
+      <p>O anúncio ficará privado até a conclusão da análise administrativa.</p>
+    </div>
+
+    <p class="texto-proprietario-em-breve">
+      O cadastro do proprietário será disponibilizado nesta área.
+    </p>
+
+  </div>
+
 </section>
+
 
 <section class="como-encontrar">
   <span class="inicio-etiqueta">TAMBÉM ESTÁ PROCURANDO?</span>
