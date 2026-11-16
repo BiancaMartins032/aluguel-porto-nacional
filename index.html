@@ -28,13 +28,14 @@
     padding: 0;
   }
 
-  body {
-    font-family: Arial, sans-serif;
-    background: #F7F8FF;
-    color: #343746;
-  }
-
   
+body {
+  font-family: Arial, sans-serif;
+  background: #F4F6FA;
+  color: #343746;
+  margin: 0;
+}
+
 header {
   background: linear-gradient(110deg, #173A7A, #204A91);
   padding: 20px 24px;
@@ -116,7 +117,8 @@ header {
 main {
   max-width: 1100px;
   margin: auto;
-  padding: 24px;
+  padding: 28px 24px;
+  box-sizing: border-box;
 }
 
 @media (max-width: 600px) {
@@ -125,22 +127,23 @@ main {
   }
 
   .topo {
-    gap: 10px;
+    gap: 9px;
   }
 
   .marca {
-    grid-template-columns: 44px 1fr;
-    column-gap: 10px;
+    grid-template-columns: 42px 1fr;
+    column-gap: 9px;
   }
 
   .marca::before {
-    width: 44px;
-    height: 44px;
-    font-size: 34px;
+    width: 42px;
+    height: 42px;
+    font-size: 32px;
+    border-radius: 10px;
   }
 
   .marca h1 {
-    font-size: 18px;
+    font-size: 17px;
   }
 
   .marca p {
@@ -148,14 +151,30 @@ main {
   }
 
   .perfil {
-    width: 40px;
-    height: 40px;
+    width: 39px;
+    height: 39px;
   }
 
   main {
-    padding: 16px;
+    padding: 16px 13px;
   }
 }
+
+@media (max-width: 360px) {
+  .marca h1 {
+    font-size: 15px;
+  }
+
+  .marca p {
+    font-size: 9px;
+  }
+
+  .admin-acesso {
+    padding: 9px;
+    font-size: 11px;
+  }
+}
+
 
 
   /* APRESENTAÇÃO INICIAL */
