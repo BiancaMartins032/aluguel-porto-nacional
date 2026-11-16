@@ -175,6 +175,7 @@ async function verificarAdministrador(){
   }
 }
 
+
 async function abrirPainelAdmin(){
   const lista = document.getElementById("listaIndicacoes");
 
@@ -198,16 +199,81 @@ async function abrirPainelAdmin(){
 
   if(!data?.ok || !data?.administrador){
     lista.textContent = "Acesso administrativo não autorizado.";
-    if(document.getElementById("botaoAdmin")){
-      document.getElementById("botaoAdmin").style.display = "none";
-    }
+
+    const botao = document.getElementById("botaoAdmin");
+    if(botao) botao.style.display = "none";
+
     return;
   }
 
-  lista.textContent = data.total === 0
-    ? "Nenhuma indicação pendente no momento."
-    : `Foram encontradas ${data.total} indicações.`;
+  const indicacoes = Array.isArray(data.indicacoes)
+    ? data.indicacoes
+    : [];
+
+  if(indicacoes.length === 0){
+    lista.textContent = "Nenhuma indicação pendente no momento.";
+    return;
+  }
+
+  lista.innerHTML = indicacoes.map(item => {
+    const criado = item.criado_em
+      ? new Date(item.criado_em).toLocaleString("pt-BR")
+      : "Não informado";
+
+    const expira = item.expira_em
+      ? new Date(item.expira_em).toLocaleString("pt-BR")
+      : "Não informado";
+
+    const garagem = item.garagem === true
+      ? "Sim"
+      : item.garagem === false
+        ? "Não"
+        : "Não informado";
+
+    return `
+      <div style="
+        background:#F4F6F0;
+        border:1px solid #E5E9E2;
+        border-radius:12px;
+        padding:14px;
+        margin:12px 0;
+      ">
+        <h3>${escapeHtml(item.bairro || "Bairro não informado")}</h3>
+
+        <p><strong>Aluguel:</strong>
+          ${formatarPreco(item.valor_mensal)}/mês
+        </p>
+
+        <p><strong>Telefone da placa:</strong>
+          ${escapeHtml(item.telefone_placa || "Não identificado")}
+        </p>
+
+        <p><strong>Descrição:</strong>
+          ${escapeHtml(item.descricao || "Não informada")}
+        </p>
+
+        <p><strong>Quartos:</strong>
+          ${Number(item.quartos || 0)}
+        </p>
+
+        <p><strong>Banheiros:</strong>
+          ${Number(item.banheiros || 0)}
+        </p>
+
+        <p><strong>Garagem:</strong> ${garagem}</p>
+
+        <p><strong>Status:</strong>
+          ${escapeHtml(item.status)}
+        </p>
+
+        <p><strong>Recebida em:</strong> ${criado}</p>
+
+        <p><strong>Prazo até:</strong> ${expira}</p>
+      </div>
+    `;
+  }).join("");
 }
+
 
   async function carregarCasas(){
     if(!supabaseClient)return;
