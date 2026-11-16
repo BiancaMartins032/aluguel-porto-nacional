@@ -153,6 +153,7 @@
     renderizarCasas();
   }
   
+
 async function verificarAdministrador(){
   const botao = document.getElementById("botaoAdmin");
 
@@ -166,6 +167,14 @@ async function verificarAdministrador(){
     console.error("Erro ao verificar administrador:",error);
     return;
   }
+
+  if(data?.ok && data?.administrador){
+    if(botao) botao.style.display = "inline-block";
+    console.log("Aluguel Porto Nacional: acesso administrativo confirmado!");
+  }else{
+    console.log("Conta sem autorização administrativa.");
+  }
+}
 
 async function abrirPainelAdmin(){
   const lista = document.getElementById("listaIndicacoes");
