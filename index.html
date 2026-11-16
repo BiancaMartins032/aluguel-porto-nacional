@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#315E49">
+  <meta name="theme-color" content="#5267D8">
+  <meta name="description" content="Encontre casas para alugar em Porto Nacional - TO.">
+  <link rel="manifest" href="/manifest.json">
   <title>Aluguel Porto Nacional</title>
-  
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Aluguel Porto Nacional">
+  <meta property="og:description" content="Encontre casas para alugar em Porto Nacional - TO.">
+  <meta property="og:url" content="https://aluguel-porto-nacional-app.biancamartins-xoxo.workers.dev/">
+</head>
+
 <style>
+
   * {
     box-sizing: border-box;
     margin: 0;
@@ -1679,5 +1688,28 @@ document.getElementById("formIndicacao").addEventListener("submit", async e => {
   }
   iniciar();
 </script>
+  
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("/service-worker.js")
+        .catch((erro) => {
+          console.error("Erro ao registrar o aplicativo:", erro);
+        });
+    });
+  }
+</script>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("/service-worker.js")
+        .catch((erro) => {
+          console.error("Erro ao registrar o aplicativo:", erro);
+        });
+    });
+  }
+</script>
+
 </body>
 </html>
