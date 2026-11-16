@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -6,490 +5,281 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#315E49">
   <title>Aluguel Porto Nacional</title>
-
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background: #F4F6F0;
-      color: #263B30;
-    }
-
-    header {
-      background: #FFFFFF;
-      padding: 18px 16px;
-      border-bottom: 1px solid #E5E9E2;
-    }
-
-    .topo {
-      max-width: 700px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .marca h1 {
-      color: #315E49;
-      font-size: 21px;
-    }
-
-    .marca p {
-      color: #68766B;
-      font-size: 12px;
-      margin-top: 4px;
-    }
-
-    .perfil {
-      border: none;
-      background: #F0F3ED;
-      color: #315E49;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      font-size: 20px;
-      cursor: pointer;
-    }
-
-    main {
-      max-width: 700px;
-      margin: auto;
-      padding: 16px;
-    }
-
-    .localizacao {
-      background: white;
-      padding: 14px;
-      border-radius: 12px;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-    }
-
-    .localizacao small {
-      color: #68766B;
-      display: block;
-      margin-bottom: 3px;
-    }
-
-    .busca {
-      background: white;
-      border-radius: 12px;
-      padding: 13px;
-      display: flex;
-      gap: 10px;
-      margin-bottom: 22px;
-    }
-
-    .busca input {
-      border: none;
-      outline: none;
-      width: 100%;
-      font-size: 14px;
-      color: #263B30;
-      background: transparent;
-    }
-
-    .titulo-lista {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-
-    .titulo-lista h2 {
-      font-size: 17px;
-    }
-
-    .titulo-lista span {
-      color: #68766B;
-      font-size: 12px;
-    }
-
-    .casa {
-      background: white;
-      padding: 10px;
-      border-radius: 12px;
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      margin-bottom: 10px;
-      cursor: pointer;
-      transition: .2s;
-    }
-
-    .casa:hover {
-      transform: translateY(-2px);
-    }
-
-    .casa img {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 9px;
-      flex-shrink: 0;
-    }
-
-    .informacoes {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .informacoes h3 {
-      font-size: 15px;
-      margin-bottom: 7px;
-    }
-
-    .informacoes p {
-      font-size: 12px;
-      color: #68766B;
-      margin-bottom: 7px;
-    }
-
-    .preco {
-      color: #315E49 !important;
-      font-weight: bold;
-      font-size: 14px !important;
-      margin-bottom: 0 !important;
-    }
-
-    .favorito {
-      background: transparent;
-      border: none;
-      font-size: 24px;
-      color: #9AA39B;
-      cursor: pointer;
-      padding: 5px;
-    }
-
-    .favorito.ativo {
-      color: #D85D65;
-    }
-
-    .mensagem {
-      color: #68766B;
-      text-align: center;
-      padding: 30px 10px;
-      display: none;
-    }
-
-    .modal {
-      position: fixed;
-      inset: 0;
-      background: #0008;
-      display: none;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      z-index: 10;
-    }
-
-    .modal.ativo {
-      display: flex;
-    }
-
-    .conteudo-modal {
-      background: white;
-      border-radius: 18px;
-      padding: 25px;
-      max-width: 360px;
-      width: 100%;
-      text-align: center;
-    }
-
-    .conteudo-modal h2 {
-      color: #315E49;
-      margin-bottom: 10px;
-    }
-
-    .conteudo-modal p {
-      color: #68766B;
-      font-size: 14px;
-      line-height: 1.5;
-      margin-bottom: 20px;
-    }
-
-    .botao {
-      background: #315E49;
-      color: white;
-      border: none;
-      padding: 13px;
-      width: 100%;
-      border-radius: 10px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-bottom: 9px;
-    }
-
-    .fechar {
-      background: #F0F3ED;
-      color: #315E49;
-    }
-
-    .detalhes img {
-      width: 100%;
-      height: 210px;
-      object-fit: cover;
-      border-radius: 12px;
-      margin-bottom: 14px;
-    }
-
-    .detalhes h2 {
-      margin-bottom: 8px;
-    }
-
-    .detalhes p {
-      margin-bottom: 9px;
-      color: #68766B;
-      font-size: 14px;
-    }
-
-    @media (max-width: 380px) {
-      .casa img {
-        width: 82px;
-        height: 90px;
-      }
-
-      .informacoes h3 {
-        font-size: 14px;
-      }
-    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Arial,sans-serif;background:#F4F6F0;color:#263B30}
+    header{background:#fff;padding:18px 16px;border-bottom:1px solid #E5E9E2}
+    .topo{max-width:700px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+    .marca h1{color:#315E49;font-size:21px}.marca p{color:#68766B;font-size:12px;margin-top:4px}
+    .perfil{border:0;background:#F0F3ED;color:#315E49;width:40px;height:40px;border-radius:50%;font-size:20px;cursor:pointer}
+    main{max-width:700px;margin:auto;padding:16px}
+    .localizacao,.busca{background:#fff;border-radius:12px;margin-bottom:12px}
+    .localizacao{padding:14px;display:flex;align-items:center;gap:10px;cursor:pointer}
+    .localizacao small{color:#68766B;display:block;margin-bottom:3px}
+    .busca{padding:13px;display:flex;gap:10px;margin-bottom:22px}
+    .busca input{border:0;outline:0;width:100%;font-size:14px;color:#263B30;background:transparent}
+    .titulo-lista{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+    .titulo-lista h2{font-size:17px}.titulo-lista span{color:#68766B;font-size:12px}
+    .casa{background:#fff;padding:10px;border-radius:12px;display:flex;gap:12px;align-items:center;margin-bottom:10px;cursor:pointer}
+    .casa img{width:100px;height:100px;object-fit:cover;border-radius:9px;flex-shrink:0;background:#edf0e9}
+    .informacoes{flex:1;min-width:0}.informacoes h3{font-size:15px;margin-bottom:7px}
+    .informacoes p{font-size:12px;color:#68766B;margin-bottom:7px}
+    .preco{color:#315E49!important;font-weight:bold;font-size:14px!important;margin-bottom:0!important}
+    .favorito{background:transparent;border:0;font-size:24px;color:#9AA39B;cursor:pointer;padding:5px}
+    .favorito.ativo{color:#D85D65}
+    .mensagem{color:#68766B;text-align:center;padding:30px 10px}
+    .modal{position:fixed;inset:0;background:#0008;display:none;justify-content:center;align-items:center;padding:20px;z-index:10;overflow:auto}
+    .modal.ativo{display:flex}
+    .conteudo-modal{background:#fff;border-radius:18px;padding:25px;max-width:400px;width:100%;text-align:left;max-height:90vh;overflow:auto}
+    .conteudo-modal h2{color:#315E49;margin-bottom:10px}
+    .conteudo-modal p{color:#68766B;font-size:14px;line-height:1.5;margin-bottom:16px}
+    .botao{background:#315E49;color:white;border:0;padding:13px;width:100%;border-radius:10px;font-weight:bold;cursor:pointer;margin-bottom:9px}
+    .fechar{background:#F0F3ED;color:#315E49}
+    .campo{display:block;width:100%;padding:12px;border:1px solid #DCE3D9;border-radius:9px;margin:7px 0 13px;font-size:15px}
+    .detalhes img{width:100%;height:210px;object-fit:cover;border-radius:12px;margin-bottom:14px}
+    .detalhes h2{margin-bottom:8px}.detalhes p{margin-bottom:9px;color:#68766B;font-size:14px}
+    .aviso{font-size:12px!important;color:#68766B}
+    @media(max-width:380px){.casa img{width:82px;height:90px}.informacoes h3{font-size:14px}}
   </style>
 </head>
-
 <body>
-
-<header>
-  <div class="topo">
-    <div class="marca">
-      <h1>Aluguel Porto Nacional</h1>
-      <p>Encontre sua próxima casa.</p>
-    </div>
-    <button class="perfil" onclick="abrirLogin()">♙</button>
-  </div>
-</header>
+<header><div class="topo">
+  <div class="marca"><h1>Aluguel Porto Nacional</h1><p>Encontre sua próxima casa.</p></div>
+  <button class="perfil" onclick="abrirLogin()" aria-label="Minha conta">♙</button>
+</div></header>
 
 <main>
-
   <div class="localizacao" onclick="solicitarLocalizacao()">
-    <span>📍</span>
-    <div>
-      <small>Sua localização</small>
-      <strong id="localTexto">Casas próximas de você</strong>
-    </div>
-    <span style="margin-left:auto">⌄</span>
+    <span>📍</span><div><small>Sua localização</small><strong id="localTexto">Ative para ordenar por proximidade</strong></div><span style="margin-left:auto">⌄</span>
   </div>
-
-  <div class="busca">
-    <span>⌕</span>
-    <input id="pesquisa"
-      type="text"
-      placeholder="Buscar por bairro ou localização..."
-      oninput="filtrarCasas()">
-  </div>
-
-  <div class="titulo-lista">
-    <h2>Casas para alugar</h2>
-    <span id="ordem">Mais próximas</span>
-  </div>
-
+  <div class="busca"><span>⌕</span><input id="pesquisa" type="text" placeholder="Buscar por bairro..." oninput="filtrarCasas()"></div>
+  <div class="titulo-lista"><h2>Casas para alugar</h2><span id="ordem">Mais recentes</span></div>
   <div id="listaCasas"></div>
-  <div class="mensagem" id="semResultados">
-    Nenhuma casa encontrada.
-  </div>
-
+  <div class="mensagem" id="semResultados">Carregando imóveis...</div>
 </main>
 
-<div class="modal" id="modalLogin">
-  <div class="conteudo-modal">
-    <h2>Entre na sua conta</h2>
-    <p>Para salvar suas casas favoritas, você precisa entrar ou criar uma conta.</p>
-    <button class="botao" onclick="alert('Login será implementado na próxima etapa.')">
-      Entrar
-    </button>
-    <button class="botao fechar" onclick="alert('Cadastro será implementado na próxima etapa.')">
-      Criar conta
-    </button>
-    <button class="botao fechar" onclick="fecharModais()">
-      Agora não
-    </button>
-  </div>
-</div>
+<div class="modal" id="modalLogin"><div class="conteudo-modal">
+  <h2 id="tituloAuth">Entre na sua conta</h2>
+  <p id="textoAuth">Entre ou crie uma conta para salvar suas casas favoritas.</p>
+  <form id="formAuth">
+    <label for="email">E-mail</label><input class="campo" id="email" type="email" required autocomplete="email">
+    <label for="senha">Senha</label><input class="campo" id="senha" type="password" required minlength="6" autocomplete="current-password">
+    <button class="botao" id="botaoAuth" type="submit">Entrar</button>
+  </form>
+  <button class="botao fechar" id="alternarAuth" onclick="alternarModoAuth()">Criar conta</button>
+  <button class="botao fechar" id="sairConta" onclick="sair()" style="display:none">Sair da conta</button>
+  <button class="botao fechar" onclick="fecharModais()">Fechar</button>
+  <p class="aviso" id="statusAuth" role="status"></p>
+</div></div>
 
-<div class="modal" id="modalDetalhes">
-  <div class="conteudo-modal detalhes" id="detalhesCasa"></div>
-</div>
+<div class="modal" id="modalDetalhes"><div class="conteudo-modal detalhes" id="detalhesCasa"></div></div>
 
+<!-- Configure apenas a URL e a chave PUBLISHABLE do seu projeto Supabase. -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  const casas = [
-    {
-      id: 1,
-      bairro: "Centro",
-      distancia: 0.8,
-      preco: 850,
-      quartos: 2,
-      banheiros: 1,
-      garagem: "Sim",
-      descricao: "Casa aconchegante, com boa localização e espaço para sua família.",
-      imagem: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=500"
-    },
-    {
-      id: 2,
-      bairro: "Jardim Querido",
-      distancia: 1.5,
-      preco: 1000,
-      quartos: 3,
-      banheiros: 2,
-      garagem: "Sim",
-      descricao: "Casa espaçosa, ideal para famílias.",
-      imagem: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500"
-    },
-    {
-      id: 3,
-      bairro: "Novo Planalto",
-      distancia: 2.3,
-      preco: 750,
-      quartos: 2,
-      banheiros: 1,
-      garagem: "Não",
-      descricao: "Casa simples e confortável.",
-      imagem: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=500"
-    }
-  ];
+  const SUPABASE_URL = "ttps://hpqvoexqhxujraokmxkl.supabase.co";
+  const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_XQ9ExRRodYDfnGHzG4NAuQ_QdNmzFOg";
 
-  let usuarioLogado = false;
+  let supabaseClient = null;
+  let usuario = null;
+  let casas = [];
   let favoritos = [];
+  let modoCadastro = false;
+  let coordenadasUsuario = null;
 
-  function renderizarCasas(lista = casas) {
-    const container = document.getElementById("listaCasas");
-    const mensagem = document.getElementById("semResultados");
+  function configurarSupabase(){
+    if(!window.supabase){mostrarErro("Não foi possível carregar a biblioteca de conexão. Verifique sua internet e atualize a página.");return false;}
+    if(SUPABASE_URL.includes("COLE_AQUI") || SUPABASE_PUBLISHABLE_KEY.includes("COLE_AQUI")){
+      mostrarErro("O aplicativo ainda precisa da URL e da chave pública do Supabase para carregar os imóveis.");
+      document.getElementById("semResultados").textContent="Conexão ainda não configurada.";
+      return false;
+    }
+    supabaseClient = window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
+    return true;
+  }
 
-    container.innerHTML = "";
+  function mostrarErro(msg){console.error(msg);document.getElementById("semResultados").textContent=msg;}
+  function formatarPreco(valor){return Number(valor).toLocaleString("pt-BR",{style:"currency",currency:"BRL"});}
+  function distanciaKm(a,b){
+    const R=6371, rad=v=>v*Math.PI/180;
+    const dLat=rad(b.lat-a.lat),dLon=rad(b.lon-a.lon);
+    const x=Math.sin(dLat/2)**2+Math.cos(rad(a.lat))*Math.cos(rad(b.lat))*Math.sin(dLon/2)**2;
+    return 2*R*Math.atan2(Math.sqrt(x),Math.sqrt(1-x));
+  }
 
-    mensagem.style.display = lista.length ? "none" : "block";
+  async function carregarUsuario(){
+    if(!supabaseClient)return;
+    const {data:{session}}=await supabaseClient.auth.getSession();
+    usuario=session?.user||null;
+    atualizarBotaoConta();
+    if(usuario) await carregarFavoritos();
+    else favoritos=[];
+    renderizarCasas();
+  }
 
-    lista.forEach(casa => {
-      const item = document.createElement("div");
-      item.className = "casa";
+  async function carregarCasas(){
+    if(!supabaseClient)return;
+    document.getElementById("semResultados").textContent="Carregando imóveis...";
+    const {data,error}=await supabaseClient.from("imoveis_publicos").select("*").order("created_at",{ascending:false});
+    if(error){mostrarErro("Não foi possível carregar os imóveis. Tente novamente mais tarde.");console.error(error);return;}
+    casas=data||[];
+    ordenarPorProximidade();
+    renderizarCasas();
+  }
 
-      item.innerHTML = `
-        <img src="${casa.imagem}" alt="Fotografia de casa">
-        <div class="informacoes" onclick="abrirDetalhes(${casa.id})">
-          <h3>${casa.bairro}</h3>
-          <p>📍 ${casa.distancia.toFixed(1).replace(".", ",")} km de você</p>
-          <p class="preco">${formatarPreco(casa.preco)}/mês</p>
+  async function carregarFavoritos(){
+    if(!usuario)return;
+    const {data,error}=await supabaseClient.from("favoritos").select("imovel_id").eq("usuario_id",usuario.id);
+    if(error){console.error("Erro ao carregar favoritos:",error);favoritos=[];return;}
+    favoritos=(data||[]).map(item=>item.imovel_id);
+  }
+
+  function ordenarPorProximidade(){
+    // A distância real só será calculada quando os imóveis tiverem coordenadas verificadas no banco.
+    // Não exibimos distâncias fictícias.
+    casas.sort((a,b)=>{
+      if(coordenadasUsuario && a.latitude!=null && a.longitude!=null && b.latitude!=null && b.longitude!=null){
+        return distanciaKm(coordenadasUsuario,{lat:Number(a.latitude),lon:Number(a.longitude)})-
+               distanciaKm(coordenadasUsuario,{lat:Number(b.latitude),lon:Number(b.longitude)});
+      }
+      return new Date(b.created_at||0)-new Date(a.created_at||0);
+    });
+  }
+
+  function renderizarCasas(lista=casas){
+    const container=document.getElementById("listaCasas");
+    container.innerHTML="";
+    document.getElementById("semResultados").style.display=lista.length?"none":"block";
+    if(!lista.length)document.getElementById("semResultados").textContent="Ainda não há casas cadastradas. Volte em breve!";
+    lista.forEach(casa=>{
+      const item=document.createElement("div");item.className="casa";
+      const imagem=casa.imagem_url||"";
+      const dist=(coordenadasUsuario && casa.latitude!=null && casa.longitude!=null)
+        ? `<p>📍 ${distanciaKm(coordenadasUsuario,{lat:Number(casa.latitude),lon:Number(casa.longitude)}).toFixed(1).replace(".",",")} km de você</p>`
+        : `<p>📍 ${escapeHtml(casa.bairro)}</p>`;
+      item.innerHTML=`
+        <img src="${escapeAttr(imagem)}" alt="Foto do imóvel" onerror="this.style.visibility='hidden'">
+        <div class="informacoes">
+          <h3>${escapeHtml(casa.bairro)}</h3>
+          ${dist}
+          <p class="preco">${formatarPreco(casa.valor_mensal)}/mês</p>
         </div>
-        <button class="favorito ${favoritos.includes(casa.id) ? "ativo" : ""}"
-          onclick="alternarFavorito(event, ${casa.id})"
-          aria-label="Favoritar casa">
-          ${favoritos.includes(casa.id) ? "♥" : "♡"}
-        </button>
-      `;
-
-      item.addEventListener("click", e => {
-        if (e.target.closest(".favorito")) return;
-        if (e.target.closest(".informacoes")) return;
-        abrirDetalhes(casa.id);
-      });
-
+        <button class="favorito ${favoritos.includes(casa.id)?"ativo":""}" aria-label="Favoritar casa">${favoritos.includes(casa.id)?"♥":"♡"}</button>`;
+      item.querySelector(".favorito").addEventListener("click",e=>alternarFavorito(e,casa.id));
+      item.addEventListener("click",()=>abrirDetalhes(casa.id));
       container.appendChild(item);
     });
   }
 
-  function formatarPreco(valor) {
-    return valor.toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL"
-    });
+  function escapeHtml(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+  function escapeAttr(v){return escapeHtml(v).replace(/`/g,"");}
+  function filtrarCasas(){
+    const termo=document.getElementById("pesquisa").value.trim().toLowerCase();
+    renderizarCasas(casas.filter(c=>String(c.bairro||"").toLowerCase().includes(termo)));
   }
 
-  function filtrarCasas() {
-    const termo = document.getElementById("pesquisa").value
-      .toLowerCase();
-
-    const resultado = casas.filter(casa =>
-      casa.bairro.toLowerCase().includes(termo)
-    );
-
-    renderizarCasas(resultado);
-  }
-
-  function alternarFavorito(evento, id) {
+  async function alternarFavorito(evento,id){
     evento.stopPropagation();
-
-    if (!usuarioLogado) {
-      document.getElementById("modalLogin").classList.add("ativo");
-      return;
-    }
-
-    if (favoritos.includes(id)) {
-      favoritos = favoritos.filter(item => item !== id);
-    } else {
+    if(!usuario){abrirLogin();return;}
+    const existe=favoritos.includes(id);
+    if(existe){
+      const {error}=await supabaseClient.from("favoritos").delete().eq("usuario_id",usuario.id).eq("imovel_id",id);
+      if(error){alert("Não foi possível remover dos favoritos. Tente novamente.");console.error(error);return;}
+      favoritos=favoritos.filter(x=>x!==id);
+    }else{
+      const {error}=await supabaseClient.from("favoritos").insert({usuario_id:usuario.id,imovel_id:id});
+      if(error){alert("Não foi possível salvar este favorito. Tente novamente.");console.error(error);return;}
       favoritos.push(id);
     }
-
-    renderizarCasas();
+    filtrarCasas();
   }
 
-  function abrirDetalhes(id) {
-    const casa = casas.find(item => item.id === id);
-
-    document.getElementById("detalhesCasa").innerHTML = `
-      <img src="${casa.imagem}" alt="Casa">
-      <h2>${casa.bairro}</h2>
-      <p>📍 ${casa.distancia.toFixed(1).replace(".", ",")} km de você</p>
-      <p><strong>${formatarPreco(casa.preco)}/mês</strong></p>
-      <p>${casa.quartos} quartos · ${casa.banheiros} banheiro(s)</p>
-      <p>Garagem: ${casa.garagem}</p>
-      <p>${casa.descricao}</p>
-      <button class="botao" onclick="alert('Contato será conectado na próxima etapa.')">
-        Entrar em contato
-      </button>
-      <button class="botao fechar" onclick="fecharModais()">
-        Voltar
-      </button>
-    `;
-
+  function abrirDetalhes(id){
+    const casa=casas.find(x=>x.id===id);if(!casa)return;
+    const img=casa.imagem_url?`<img src="${escapeAttr(casa.imagem_url)}" alt="Foto do imóvel">`:"";
+    document.getElementById("detalhesCasa").innerHTML=`
+      ${img}<h2>${escapeHtml(casa.bairro)}</h2>
+      <p><strong>${formatarPreco(casa.valor_mensal)}/mês</strong></p>
+      <p>${Number(casa.quartos||0)} quarto(s) · ${Number(casa.banheiros||0)} banheiro(s)</p>
+      <p>Garagem: ${casa.garagem===true?"Sim":"Não informado"}</p>
+      <p>${escapeHtml(casa.descricao||"Descrição não informada.")}</p>
+      <p class="aviso">O contato do proprietário será disponibilizado após a implementação da confirmação de autorização e verificação do telefone.</p>
+      <button class="botao fechar" onclick="fecharModais()">Voltar</button>`;
     document.getElementById("modalDetalhes").classList.add("ativo");
   }
 
-  function abrirLogin() {
+  function abrirLogin(){
+    document.getElementById("statusAuth").textContent="";
     document.getElementById("modalLogin").classList.add("ativo");
   }
-
-  function fecharModais() {
-    document.querySelectorAll(".modal").forEach(modal => {
-      modal.classList.remove("ativo");
-    });
+  function fecharModais(){document.querySelectorAll(".modal").forEach(m=>m.classList.remove("ativo"));}
+  function alternarModoAuth(){
+    modoCadastro=!modoCadastro;
+    document.getElementById("tituloAuth").textContent=modoCadastro?"Criar sua conta":"Entre na sua conta";
+    document.getElementById("textoAuth").textContent=modoCadastro?"Informe seu e-mail e crie uma senha com pelo menos 6 caracteres.":"Entre para salvar suas casas favoritas.";
+    document.getElementById("botaoAuth").textContent=modoCadastro?"Criar conta":"Entrar";
+    document.getElementById("alternarAuth").textContent=modoCadastro?"Já tenho conta":"Criar conta";
+    document.getElementById("senha").autocomplete=modoCadastro?"new-password":"current-password";
+    document.getElementById("statusAuth").textContent="";
+  }
+  function atualizarBotaoConta(){
+    document.querySelector(".perfil").textContent=usuario?"✓":"♙";
+    document.getElementById("alternarAuth").style.display=usuario?"none":"block";
+    document.getElementById("formAuth").style.display=usuario?"none":"block";
+    document.getElementById("sairConta").style.display=usuario?"block":"none";
+    document.getElementById("tituloAuth").textContent=usuario?"Você está conectado":"Entre na sua conta";
+    document.getElementById("textoAuth").textContent=usuario?usuario.email:"Entre ou crie uma conta para salvar suas casas favoritas.";
   }
 
-  function solicitarLocalizacao() {
-    if (!navigator.geolocation) {
-      alert("Seu dispositivo não oferece suporte à localização.");
+  document.getElementById("formAuth").addEventListener("submit",async e=>{
+    e.preventDefault();if(!supabaseClient)return;
+    const email=document.getElementById("email").value.trim();
+    const password=document.getElementById("senha").value;
+    const status=document.getElementById("statusAuth");
+    const botao=document.getElementById("botaoAuth");botao.disabled=true;status.textContent="Aguarde...";
+    let result;
+    if(modoCadastro) result=await supabaseClient.auth.signUp({email,password});
+    else result=await supabaseClient.auth.signInWithPassword({email,password});
+    botao.disabled=false;
+    if(result.error){status.textContent="Não foi possível concluir. Confira os dados e tente novamente.";console.error(result.error);return;}
+    if(modoCadastro && !result.data.session){
+      status.textContent="Conta criada! Confira seu e-mail para confirmar o cadastro antes de entrar.";
       return;
     }
+    usuario=result.data.user||result.data.session?.user||null;
+    await carregarFavoritos();atualizarBotaoConta();renderizarCasas();
+    status.textContent="Acesso realizado com sucesso!";
+    setTimeout(fecharModais,900);
+  });
 
-    navigator.geolocation.getCurrentPosition(
-      () => {
-        document.getElementById("localTexto").textContent =
-          "Localização autorizada";
-        alert("Localização recebida! A ordenação real será implementada na próxima etapa.");
-      },
-      () => {
-        alert("Não foi possível acessar sua localização. Você ainda pode pesquisar por bairro.");
-      }
-    );
+  async function sair(){
+    if(!supabaseClient)return;
+    const {error}=await supabaseClient.auth.signOut();
+    if(error){alert("Não foi possível sair da conta.");return;}
+    usuario=null;favoritos=[];atualizarBotaoConta();renderizarCasas();fecharModais();
   }
 
-  renderizarCasas();
-</script>
+  function solicitarLocalizacao(){
+    if(!navigator.geolocation){alert("Seu dispositivo não oferece suporte à localização.");return;}
+    navigator.geolocation.getCurrentPosition(pos=>{
+      coordenadasUsuario={lat:pos.coords.latitude,lon:pos.coords.longitude};
+      document.getElementById("localTexto").textContent="Localização autorizada";
+      ordenarPorProximidade();filtrarCasas();
+      alert("Localização recebida. A distância será mostrada quando os imóveis tiverem coordenadas cadastradas.");
+    },()=>alert("Não foi possível acessar sua localização. Você ainda pode pesquisar por bairro."),{enableHighAccuracy:false,timeout:10000,maximumAge:300000});
+  }
 
+  async function iniciar(){
+    if(!configurarSupabase())return;
+    await carregarUsuario();
+    await carregarCasas();
+    supabaseClient.auth.onAuthStateChange(async(_event,session)=>{
+      usuario=session?.user||null;
+      if(usuario)await carregarFavoritos();else favoritos=[];
+      atualizarBotaoConta();renderizarCasas();
+    });
+  }
+  iniciar();
+</script>
 </body>
 </html>
