@@ -12,6 +12,16 @@
     .topo{max-width:700px;margin:auto;display:flex;justify-content:space-between;align-items:center}
     .marca h1{color:#315E49;font-size:21px}.marca p{color:#68766B;font-size:12px;margin-top:4px}
     .perfil{border:0;background:#F0F3ED;color:#315E49;width:40px;height:40px;border-radius:50%;font-size:20px;cursor:pointer}
+    .admin-acesso{
+  border:0;
+  background:#315E49;
+  color:white;
+  padding:10px 12px;
+  border-radius:9px;
+  font-size:12px;
+  font-weight:bold;
+  cursor:pointer;
+}
     main{max-width:700px;margin:auto;padding:16px}
     .localizacao,.busca{background:#fff;border-radius:12px;margin-bottom:12px}
     .localizacao{padding:14px;display:flex;align-items:center;gap:10px;cursor:pointer}
@@ -45,7 +55,16 @@
 <body>
 <header><div class="topo">
   <div class="marca"><h1>Aluguel Porto Nacional</h1><p>Encontre sua próxima casa.</p></div>
-  <button class="perfil" onclick="abrirLogin()" aria-label="Minha conta">♙</button>
+  <button
+  id="botaoAdmin"
+  class="admin-acesso"
+  style="display:none"
+  onclick="abrirPainelAdmin()"
+>
+  Administração
+</button>
+
+<button class="perfil" onclick="abrirLogin()" aria-label="Minha conta">♙</button>
 </div></header>
 
 <main>
@@ -73,6 +92,20 @@
 </div></div>
 
 <div class="modal" id="modalDetalhes"><div class="conteudo-modal detalhes" id="detalhesCasa"></div></div>
+  <div class="modal" id="modalAdmin">
+  <div class="conteudo-modal">
+    <h2>Administração</h2>
+    <p>Gerencie as indicações de imóveis que aguardam análise.</p>
+
+    <div id="listaIndicacoes">
+      Carregando indicações...
+    </div>
+
+    <button class="botao fechar" onclick="fecharModais()">
+      Fechar
+    </button>
+  </div>
+</div>
 
 <!-- Configure apenas a URL e a chave PUBLISHABLE do seu projeto Supabase. -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -119,8 +152,13 @@
     else favoritos=[];
     renderizarCasas();
   }
-  async function verificarAdministrador(){
-  if(!usuario)return;
+  
+async function verificarAdministrador(){
+  const botao = document.getElementById("botaoAdmin");
+
+  if(botao) botao.style.display = "none";
+
+  if(!usuario || !supabaseClient) return;
 
   const {data,error}=await supabaseClient.functions.invoke("quick-responder");
 
@@ -130,6 +168,50 @@
   }
 
   if(data?.ok && data?.administrador){
+    if(botao) botao.style.display = "inline-block";
+    console.log("Aluguel Porto Nacional: acesso administrativo confirmado!");
+  }else{
+    console.log("Conta sem autorização administrativa.");
+  }
+}
+
+async function abrirPainelAdmin(){
+  const lista = document.getElementById("listaIndicacoes");
+
+  document.getElementById("modalAdmin").classList.add("ativo");
+  lista.textContent = "Verificando autorização...";
+
+  if(!usuario || !supabaseClient){
+    lista.textContent = "Faça login para continuar.";
+    return;
+  }
+
+  lista.textContent = "Carregando indicações...";
+
+  const {data,error} = await supabaseClient.functions.invoke("quick-responder");
+
+  if(error){
+    console.error("Erro ao carregar painel:",error);
+    lista.textContent = "Não foi possível carregar as indicações.";
+    return;
+  }
+
+  if(!data?.ok || !data?.administrador){
+    lista.textContent = "Acesso administrativo não autorizado.";
+    if(document.getElementById("botaoAdmin")){
+      document.getElementById("botaoAdmin").style.display = "none";
+    }
+    return;
+  }
+
+  lista.textContent = data.total === 0
+    ? "Nenhuma indicação pendente no momento."
+    : `Foram encontradas ${data.total} indicações.`;
+}
+
+
+  if(data?.ok && data?.administrador){
+    if(botao) botao.style.display = "inline-block";
     console.log("Aluguel Porto Nacional: acesso administrativo confirmado!");
   }else{
     console.log("Conta sem autorização administrativa.");
@@ -293,10 +375,18 @@
     await carregarUsuario();
     await carregarCasas();
     supabaseClient.auth.onAuthStateChange(async(_event,session)=>{
-      usuario=session?.user||null;
-      if(usuario)await carregarFavoritos();else favoritos=[];
-      atualizarBotaoConta();renderizarCasas();
-    });
+  usuario=session?.user||null;
+
+  if(usuario){
+    await carregarFavoritos();
+  }else{
+    favoritos=[];
+  }
+
+  atualizarBotaoConta();
+  await verificarAdministrador();
+  renderizarCasas();
+});
   }
   iniciar();
 </script>
