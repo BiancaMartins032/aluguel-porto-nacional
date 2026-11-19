@@ -1323,6 +1323,20 @@ main {
   line-height: 1.5;
 }
 
+/* SELO GRATUITO */
+.selo-gratuito {
+  width: fit-content;
+  margin: 0 auto 20px;
+  padding: 10px 34px;
+  border-radius: 999px;
+  background: #FE6C01;
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
 </style>
 
 </head>
@@ -1407,43 +1421,8 @@ main {
 <main>
 
 
-  <section class="inicio-apresentacao">
-    <div class="inicio-texto">
-      <span class="inicio-etiqueta">ALUGUEL PORTO NACIONAL</span>
-      <h1>Uma placa de aluguel pode ajudar alguém a encontrar um lar.</h1>
-      <p>
-        Viu uma casa com placa de ALUGA-SE pela cidade?
-        Você pode ajudar o proprietário a encontrar um inquilino
-        e alguém a encontrar sua próxima casa.
-      </p>
-      <button class="botao" type="button" onclick="abrirIndicacao()">
-        + Quero indicar uma casa
-      </button>
-    </div>
-
-    <div class="inicio-ilustracao" aria-hidden="true">
-      <svg viewBox="0 0 160 180" xmlns="http://www.w3.org/2000/svg">
-        <rect x="13" y="25" width="134" height="142" rx="22" fill="#E9EDFF"/>
-        <path d="M39 83 L80 49 L121 83 V139 H39 Z" fill="#5267D8"/>
-        <path d="M30 84 L80 43 L130 84" fill="none" stroke="#4053BD" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-        <rect x="69" y="101" width="23" height="38" rx="3" fill="#F7F8FF"/>
-        <rect x="46" y="91" width="16" height="16" rx="2" fill="#F7F8FF"/>
-        <rect x="98" y="91" width="16" height="16" rx="2" fill="#F7F8FF"/>
-        <path d="M104 19 H145 V53 H104 Z" fill="#D97732"/>
-        <path d="M110 29 H139 M110 37 H134" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
-      </svg>
-    </div>
-  </section>
-
   
-
 <section class="como-ajudar">
-
-  <div class="secao-introducao">
-    <span class="inicio-etiqueta">ANUNCIE SEU IMÓVEL OU AJUDE ALGUÉM A ENCONTRAR UM</span>
-    <h2>Como você quer publicar?</h2>
-    <p>Escolha uma das opções abaixo.</p>
-  </div>
 
   <div class="seletor-publicacao">
 
@@ -1461,7 +1440,6 @@ main {
         <path d="M17 5L20 2H28L31 5" stroke="#5267D8" stroke-width="2.5"/>
       </svg>
       <strong>Indicar uma casa</strong>
-      <small>Não sou proprietário</small>
       <span class="indicador-selecao"></span>
     </button>
 
@@ -1478,11 +1456,12 @@ main {
         <path d="M20 41V28H29V41" stroke="#D97732" stroke-width="2.8"/>
       </svg>
       <strong>Meu imóvel</strong>
-      <small>Sou proprietário</small>
       <span class="indicador-selecao"></span>
     </button>
 
   </div>
+
+  <div class="selo-gratuito">GRATUITO</div>
 
   <!-- CONTEÚDO DA INDICAÇÃO -->
   <div class="opcao-conteudo" id="conteudoIndicacao" hidden>
@@ -1584,6 +1563,7 @@ main {
   </div>
 
 </section>
+
 
 
 <section class="como-encontrar">
